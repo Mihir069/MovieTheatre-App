@@ -28,9 +28,8 @@
     cursor: pointer;
     background-color: #007bff;
 }
-  
-.input-group-text img {
-    margin-right: 5px;
-}
-  
+.cursor{
+    cursor: pointer;
+}  
+
   
