@@ -23,7 +23,9 @@
     height: 20px;
 }
   
-
+.inline-end{
+    float: inline-end;
+}
 .input-group-text {
     cursor: pointer;
     background-color: #007bff;

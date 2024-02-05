@@ -1,12 +1,15 @@
 import "../css/bootstrap-css/bootstrap-grid.css";
 import "../css/movieHeader.css";
+import { Link } from "react-router-dom";
 const MovieHeader = () => {
     return (
         <div className="container">
             <nav className="navbar">
                 <div className="row align-items-center px-sm-3 py-sm-3">
                     <div className="col-12 col-lg-3 cursor">
-                        <img src="./svg/movie-logo.png" alt="movie-logo" height="55px" width="200px" />
+                        <Link to="/">
+                            <img src="./svg/movie-logo.png" alt="movie-logo" height="55px" width="200px" />
+                        </Link>
                     </div>
                     <div className="col-12 col-lg-6 ">
                         <div className=" d-lg-flex">
@@ -17,7 +20,7 @@ const MovieHeader = () => {
                         </div>
                     </div>
                     <div className="col-12 col-lg-3 ">
-                        <div className="mx-5">
+                        <div className="mx-5 inline-end">
                             <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px" className="cursor mx-2" />
                             <img src="./svg/user-solid.svg" alt="user" height="20px" className=" cursor mx-2" />
                         </div>
