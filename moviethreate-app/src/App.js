@@ -1,4 +1,4 @@
-import MovieHeader from "./components/movieHeader";
+import MovieHeader from "./components/js/movieHeader";
 const App = () =>{
     return(
         <div><MovieHeader/></div>
