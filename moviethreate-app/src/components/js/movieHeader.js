@@ -3,28 +3,24 @@ import "../css/movieHeader.css";
 const MovieHeader = () =>{
     return(
         <div className="container">
-            <nav className="navbar ">
-                <div className="row align-items-center">
+            <nav className="navbar">
+                <div className="row align-items-center px-sm-3 py-sm-3">
                     <div className="col-12 col-lg-3">
                         <img src="./svg/movie-logo.png" alt="movie-logo" height="55px" width="200px"/>
                     </div>
                     <div className="col-12 col-lg-6 ">
                         <div className="input-group d-lg-flex">
                             <input type="text" className="custom-input" placeholder="Search movies..." />
-                            <span className="input-group-text m-lg-6">
+                            <span className="input-group-text m-lg-auto">
                                 <img src="./svg/magnifying-glass-solid.svg" alt="search-icon" className="img-fluid" />
                             </span>
                         </div>
-                        <div className="input-group-append">
-
-                        </div>
                     </div>
                     <div className="col-12 col-lg-3 ">
-                        <img src="./svg/movie-logo.png" alt="movie-logo" height="55px" width="200px"/>
+                        <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px"/>
+                        <img src="./svg/user-solid.svg" alt="user" height="55px" width="200px"/>
                     </div>
                 </div>
-                
-                hello
             </nav>
         </div>
     )
