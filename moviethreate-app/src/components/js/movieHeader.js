@@ -17,8 +17,11 @@ const MovieHeader = () =>{
                         </div>
                     </div>
                     <div className="col-12 col-lg-3 ">
-                        <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px"/>
-                        <img src="./svg/user-solid.svg" alt="user" height="55px" width="200px"/>
+                        <div className="mx-5">
+                        <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px" className="curser mx-3"/>
+                        <img src="./svg/user-solid.svg" alt="user" height="20px"lassName=" curser mx-3"/>
+                        </div>
+                        
                     </div>
                 </div>
             </nav>
