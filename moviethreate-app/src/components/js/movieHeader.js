@@ -1,7 +1,13 @@
+import { useState } from "react";
 import "../css/bootstrap-css/bootstrap-grid.css";
 import "../css/movieHeader.css";
 import { Link } from "react-router-dom";
 const MovieHeader = () => {
+    const [menuOpen,setMenuOpen] = useState(false)
+
+    const toggleMenu = () =>{
+        setMenuOpen(!menuOpen)
+    }
     return (
         <div className="container">
             <nav className="navbar">
@@ -27,7 +33,7 @@ const MovieHeader = () => {
                             <div className="user">
                                 <img src="./svg/user-solid.svg" alt="user" height="20px" className=" cursor mx-2" />
                             </div>
-                            <div className="menu">
+                            <div className="menu" onClick={toggleMenu}>
                                 <img src="./svg/bars-solid.svg" alt="menu-bar" height="20px" className=" cursor mx-2" />
                             </div>
                             
@@ -36,6 +42,13 @@ const MovieHeader = () => {
                     </div>
                 </div>
             </nav>
+            {
+                menuOpen && (<div className="menu-slide">
+                    <ul>
+                        <li><Link to="/">Abour</Link></li>
+                    </ul>
+                </div>
+            )}
         </div>
     )
 }
