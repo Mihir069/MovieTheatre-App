@@ -1,0 +1,21 @@
+.custom-input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ced4da; 
+}
+  
+.custom-input:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 0 0.2rem #0c2d51;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: 20px;
+}
+.input-group-text {
+    cursor: pointer;
+    background-color: #007bff;
+}

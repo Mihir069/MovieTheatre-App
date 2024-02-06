@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Logo from "../common/logo";
+import SearchBar from "../common/search-bar";
 import "./style.css";
 import { Link } from "react-router-dom";
 const MovieHeader = () => {
@@ -18,12 +19,7 @@ const MovieHeader = () => {
                         </Link>
                     </div>
                     <div className="col-12 col-lg-6 ">
-                        <div className=" d-lg-flex">
-                            <input type="text" className="custom-input" placeholder="Search movies..." />
-                            <span className="input-group-text p-2">
-                                <img src="./svg/magnifying-glass-solid.svg" alt="search-icon" className="img-fluid" />
-                            </span>
-                        </div>
+                        <SearchBar/>
                     </div>
                     <div className="col-12 col-lg-3 ">
                         <div className="mx-5 inline-end d-lg-flex">
