@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Logo from "../common/logo";
 import SearchBar from "../common/search-bar";
+import BookMark from "../common/book-marks";
+import User from "../common/user";
+import Menu from "../common/menu";
 import "./style.css";
 import { Link } from "react-router-dom";
 const MovieHeader = () => {
@@ -24,13 +27,13 @@ const MovieHeader = () => {
                     <div className="col-12 col-lg-3 ">
                         <div className="mx-5 inline-end d-lg-flex">
                             <div className="book-mark">
-                                <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px" className="cursor mx-2" />
+                                <BookMark/>
                             </div>
                             <div className="user">
-                                <img src="./svg/user-solid.svg" alt="user" height="20px" className=" cursor mx-2" />
+                                <User/>
                             </div>
                             <div className="menu" onClick={toggleMenu}>
-                                <img src="./svg/bars-solid.svg" alt="menu-bar" height="20px" className=" cursor mx-2" />
+                                <Menu/>
                             </div>
                             
                         </div>
