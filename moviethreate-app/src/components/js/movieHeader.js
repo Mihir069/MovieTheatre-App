@@ -20,10 +20,17 @@ const MovieHeader = () => {
                         </div>
                     </div>
                     <div className="col-12 col-lg-3 ">
-                        <div className="mx-5 inline-end">
-                            <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px" className="cursor mx-2" />
-                            <img src="./svg/user-solid.svg" alt="user" height="20px" className=" cursor mx-2" />
-                            <img src="./svg/bars-solid.svg" alt="menu-bar" height="20px" className=" cursor mx-2" />
+                        <div className="mx-5 inline-end d-lg-flex">
+                            <div className="book-mark">
+                                <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px" className="cursor mx-2" />
+                            </div>
+                            <div className="user">
+                                <img src="./svg/user-solid.svg" alt="user" height="20px" className=" cursor mx-2" />
+                            </div>
+                            <div className="menu">
+                                <img src="./svg/bars-solid.svg" alt="menu-bar" height="20px" className=" cursor mx-2" />
+                            </div>
+                            
                         </div>
 
                     </div>
