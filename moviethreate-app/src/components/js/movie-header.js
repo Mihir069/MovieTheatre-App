@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "../css/bootstrap-css/bootstrap-grid.css";
-import "../css/movieHeader.css";
+import "../css/movie-header.css";
 import { Link } from "react-router-dom";
 const MovieHeader = () => {
     const [menuOpen,setMenuOpen] = useState(false)
@@ -43,7 +42,10 @@ const MovieHeader = () => {
                 </div>
             </nav>
             {
-                menuOpen && (<div className="menu-slide">
+                menuOpen && (<div className={`menu-slide ${menuOpen?`open`:''}`}>
+                    <div className="menu-header">
+                        <span onClick={toggleMenu} className="menu-close-icon">X</span>
+                    </div>
                     <ul>
                         <li><Link to="/">Abour</Link></li>
                     </ul>

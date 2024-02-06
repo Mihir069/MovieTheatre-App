@@ -1,8 +1,8 @@
-import MovieHeader from "./components/js/movieHeader";
+import MovieHeader from "./components/js/movie-header";
 import { BrowserRouter } from "react-router-dom";
 const App = () =>{
     return(
-        <div>
+        <div className="container">
             <BrowserRouter>
                 <MovieHeader/>
             </BrowserRouter>
