@@ -23,6 +23,7 @@ const MovieHeader = () => {
                         <div className="mx-5 inline-end">
                             <img src="./svg/book-bookmark-solid.svg" alt="bookmark" height="20px" className="cursor mx-2" />
                             <img src="./svg/user-solid.svg" alt="user" height="20px" className=" cursor mx-2" />
+                            <img src="./svg/bars-solid.svg" alt="menu-bar" height="20px" className=" cursor mx-2" />
                         </div>
 
                     </div>
