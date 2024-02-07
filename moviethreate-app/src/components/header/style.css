@@ -10,7 +10,9 @@
 .inline-end{
     float: inline-end;
 }
-
+.a{
+    text-decoration: none;
+}
 .cursor{
     cursor: pointer;
 }  
@@ -30,7 +32,6 @@
 }
 .menu-slide ul{
     list-style-type: none;
-    padding: 0;
 }
 .menu-slide li{
     padding: 10px;
@@ -51,5 +52,6 @@
     color:#333;
     cursor: pointer;
 }
+
 
   

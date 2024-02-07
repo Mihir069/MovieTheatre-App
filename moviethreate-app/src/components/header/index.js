@@ -46,8 +46,12 @@ const MovieHeader = () => {
                     <div className="menu-header">
                         <span onClick={toggleMenu} className="menu-close-icon">X</span>
                     </div>
-                    <ul>
-                        <li><Link to="/">Abour</Link></li>
+                    <ul className="slider-menu m-2 p-2">
+                        <li className="px-3 menu-links"><Link to="/">About</Link></li>
+                        <li className="px-3"><Link to="/">About</Link></li>
+                        <li className="px-3"><Link to="/">About</Link></li>
+                        <li className="px-3"><Link to="/">About</Link></li>
+                        <li className="px-3"><Link to="/">About</Link></li>
                     </ul>
                 </div>
             )}
