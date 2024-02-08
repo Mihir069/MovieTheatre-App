@@ -28,7 +28,7 @@
     right: -100%;
     height: 100%;
     width: 25%;
-    background-color: #fcfdfb;
+    background-color: #edfffa;
     border-style: outset;
     transition: right 0.3s ease;
 }
@@ -65,3 +65,4 @@
 .menu-close-icon:hover {
     color: #333;
 }
+
