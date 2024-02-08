@@ -1,57 +1,67 @@
-*,::after,::before {
+
+*, ::after, ::before {
     box-sizing: border-box;
 }
-.navbar{
+
+.navbar {
     height: 95px;
     background-color: #ffffff;
     border-radius: 20px;
-    border-style: outset
+    border-style: outset;
 }
-.inline-end{
+
+.inline-end {
     float: inline-end;
 }
-.a{
+
+.a {
     text-decoration: none;
 }
-.cursor{
+
+.cursor {
     cursor: pointer;
-}  
-.menu-slide{
+}
+
+.menu-slide {
     position: fixed;
     top: 0;
-    right: 0;
+    right: -100%;
     height: 100%;
     width: 25%;
     background-color: #fcfdfb;
     border-style: outset;
-    transition: right 
-    0.3s ease;
+    transition: right 0.3s ease;
 }
-.menu-slide .open{
-    right: 0;
+
+.menu-slide.open {
+    right: 0; 
 }
-.menu-slide ul{
+
+.menu-slide.open .menu-header {
+    background-color: #f0f0f0;
+}
+
+.menu-slide ul {
     list-style-type: none;
 }
-.menu-slide li{
+
+.menu-slide li {
     padding: 10px;
     border-bottom: 1px solid #eee;
-    
 }
-.menu-header{
+
+.menu-header {
     display: flex;
     justify-content: flex-end;
     padding: 10px;
 }
-.menu-close-icon{
+
+.menu-close-icon {
     cursor: pointer;
     font-size: 20px;
     color: #666;
 }
-.menu-close-icon:hover{
-    color:#333;
-    cursor: pointer;
+
+.menu-close-icon:hover {
+    color: #333;
 }
-
-
-  
