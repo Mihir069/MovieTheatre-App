@@ -1,10 +1,15 @@
 import MovieHeader from "./components/header";
-import { BrowserRouter } from "react-router-dom";
+import Movie from "./components/movie";
+import { BrowserRouter, Route,Routes } from "react-router-dom";
 const App = () =>{
     return(
         <div className="container">
             <BrowserRouter>
                 <MovieHeader/>
+                <Routes>
+                    <Route path="/" element={<Movie/>}/>
+                </Routes>
+                
             </BrowserRouter>
         </div>
     )
