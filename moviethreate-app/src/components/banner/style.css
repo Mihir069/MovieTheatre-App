@@ -10,3 +10,6 @@
     display: block;
 }
 
+.slide img {
+    border-radius: 80px;
+}
