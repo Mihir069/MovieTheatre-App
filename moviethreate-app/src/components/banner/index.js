@@ -47,10 +47,10 @@ const MovieBanner = () =>{
                     
                 </div>
                 <div className="slider">
-                    <div className="slider-arrow ">
+                    {/* <div className="slider-arrow ">
                         <button className="p-2" onClick={prevSlide}>&#10094;</button>
                         <button className="p-2" onClick={nextSlide}>&#10095;</button>
-                    </div>
+                    </div> */}
                     {
                         banners.map((banner,index)=>(
                             <div key={index} className={`slide ${index === currentSlide?'active':''}`} onClick={()=>goToSlide(index)}>
