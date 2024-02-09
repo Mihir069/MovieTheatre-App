@@ -15,7 +15,7 @@ const MovieHeader = () => {
     };
 
     return (
-        <div className="nav">
+        <>
             <div className="navbar">
                 <div className="row align-items-center px-sm-3 py-sm-3">
                     <div className="col-12 col-lg-3 cursor">
@@ -65,7 +65,7 @@ const MovieHeader = () => {
                     </li>
                 </ul>
             </div>
-        </div>
+        </>
     );
 };
 
