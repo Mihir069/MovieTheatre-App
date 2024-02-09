@@ -21,7 +21,8 @@
 }
 .slider-arrow{
     position: absolute;
-    top: 60%;
+    top: 50%; 
+    right: 0; 
     transform: translateY(-50%);
     width: 1296px;
     display: flex;
@@ -34,6 +35,18 @@
     font-size: 24px;
     cursor: pointer;
     transition:background-color 0.3s ease;
+    padding: 10px;
+}
+@media (max-width:768px){
+    .slider-arrow{
+        width: auto;
+        max-width: none;
+        left: 50%;
+        transform: translate((-50%,-50%));
+    }
+    .slider-arrow button{
+        font-size: 18px;
+    }
 }
 .slider-arrow button:hover{
     background-color: #3b3939;
