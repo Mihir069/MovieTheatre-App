@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import "./style.css"
 const MovieBanner = () =>{
     const [currentSlide,setCurrentSlide] = useState(0);
     const banners = [
