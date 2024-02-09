@@ -2,13 +2,16 @@
     height: 95px;
     background-color: #ffffff;
     border-radius: 20px;
-    border-style: outset;
 }
 
 .inline-end {
     float: inline-end;
 }
-
+.logo{
+    display: block;
+    margin: auto;
+    max-width: 80%;
+}
 .a {
     text-decoration: none;
 }
@@ -44,7 +47,11 @@
     padding: 10px;
     border-bottom: 1px solid #eee;
 }
-
+@media (max-width:768px){
+    .menu-slide{
+        width: 100%;
+    }
+}
 .menu-header {
     display: flex;
     justify-content: flex-end;
@@ -60,4 +67,12 @@
 .menu-close-icon:hover {
     color: #333;
 }
-
+.user-menu{
+    text-align: center;
+}
+@media (max-width:768px){
+    .user-menu{
+        width: 100%;
+        margin-top: 10px;
+    }
+}
