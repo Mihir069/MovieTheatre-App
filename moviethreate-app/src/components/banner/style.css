@@ -20,4 +20,22 @@
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
 }
-
+.slider-arrow{
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    width: 1296px;
+    display: flex;
+    justify-content: space-between;
+}
+.slider-arrow button{
+    background-color: #726b6b;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    transition:background-color 0.3s ease;
+}
+.slider-arrow button:hover{
+    background-color: #3b3939;
+}

@@ -28,12 +28,29 @@ const MovieBanner = () =>{
     const goToSlide = (index)=>{
         setCurrentSlide(index)
     }
+    const nextSlide = () =>{
+        setCurrentSlide((prevSlide)=>
+        prevSlide === banners.length -1 ?0 : prevSlide+1        
+        )
+    }
+    const prevSlide = () =>{
+        setCurrentSlide((prevSlide)=>
+            prevSlide === 0 ? banners.length-1 : prevSlide - 1
+        )
+    }
     return(
             <div className="banner">
                 <div className="text-container py-sm-2 my-sm-2">
+                    <div className="text">
                     <h3>Trends For You</h3>
+                    </div>
+                    
                 </div>
                 <div className="slider">
+                    <div className="slider-arrow ">
+                        <button className="p-2" onClick={prevSlide}>&#10094;</button>
+                        <button className="p-2" onClick={nextSlide}>&#10095;</button>
+                    </div>
                     {
                         banners.map((banner,index)=>(
                             <div key={index} className={`slide ${index === currentSlide?'active':''}`} onClick={()=>goToSlide(index)}>
