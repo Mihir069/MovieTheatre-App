@@ -16,8 +16,8 @@ const MovieHeader = () => {
     };
 
     return (
-        <div className="container">
-            <nav className="navbar">
+        <div className="nav">
+            <div className="navbar">
                 <div className="row align-items-center px-sm-3 py-sm-3">
                     <div className="col-12 col-lg-3 cursor">
                         <Link to="/">
@@ -41,7 +41,7 @@ const MovieHeader = () => {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </div>
             <div className={`menu-slide ${menuOpen ? "open" : ""}`}>
                 <div className="menu-header">
                     <span onClick={toggleMenu} className="menu-close-icon">
