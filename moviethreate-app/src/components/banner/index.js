@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import "./style.css"
+import { Link } from "react-router-dom";
 const MovieBanner = () =>{
     const [currentSlide,setCurrentSlide] = useState(0);
     const banners = [
@@ -36,7 +37,10 @@ const MovieBanner = () =>{
                     {
                         banners.map((banner,index)=>(
                             <div key={index} className={`slide ${index === currentSlide?'active':''}`} onClick={()=>goToSlide(index)}>
-                                <img src={banner.image} alt={banner.alt} height="500" width="100%"/>
+                                <Link to="/">
+                                    <img src={banner.image} alt={banner.alt} height="500" width="100%"/>
+                                </Link>
+                                
                             </div>
                         ))
                     }

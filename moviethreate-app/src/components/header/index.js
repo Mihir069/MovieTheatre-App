@@ -1,4 +1,3 @@
-// index.js
 import { useState } from "react";
 import Logo from "../common/logo";
 import SearchBar from "../common/search-bar";
