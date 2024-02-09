@@ -1,5 +1,6 @@
 import MovieHeader from "./components/header";
 import Movie from "./components/movie";
+import "./index.css"
 import { BrowserRouter, Route,Routes } from "react-router-dom";
 const App = () =>{
     return(

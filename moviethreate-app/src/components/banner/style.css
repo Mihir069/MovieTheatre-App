@@ -5,7 +5,10 @@
 .slide {
     display: none;
 }
+.text-container h3{
+    font-weight: bold;
 
+}
 .slide.active {
     display: block;
 }

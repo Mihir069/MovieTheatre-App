@@ -30,8 +30,8 @@ const MovieBanner = () =>{
     }
     return(
             <div className="banner">
-                <div className="text-container">
-                    <h1>Bnner</h1>
+                <div className="text-container py-sm-2 my-sm-2">
+                    <h3>Trends For You</h3>
                 </div>
                 <div className="slider">
                     {
