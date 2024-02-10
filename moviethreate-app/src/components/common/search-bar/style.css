@@ -24,3 +24,8 @@
     background-color: #007bff;
     padding: 6px;
 }
+@media (max-width: 576px){
+    .search-bar{
+        display: none;
+    }
+}

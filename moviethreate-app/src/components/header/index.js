@@ -17,17 +17,17 @@ const MovieHeader = () => {
     return (
         <>
             <div className="navbar">
-                <div className="row align-items-center px-sm-3 py-sm-3">
-                    <div className="col-12 col-lg-3 cursor">
+                <div className="row align-items-center py-2 my-2">
+                    <div className="col-3 cursor">
                         <Link to="/">
                             <Logo />
                         </Link>
                     </div>
-                    <div className="col-12 col-lg-6 ">
+                    <div className="col-6  ">
                         <SearchBar />
                     </div>
-                    <div className="col-12 col-lg-3 ">
-                        <div className="mx-5 inline-end d-lg-flex">
+                    <div className="col-3  ">
+                        <div className="mx-5 inline-end d-flex">
                             <div className="book-mark">
                                 <BookMark />
                             </div>

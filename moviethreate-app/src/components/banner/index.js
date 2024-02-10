@@ -40,11 +40,8 @@ const MovieBanner = () =>{
     }
     return(
             <div className="banner">
-                <div className="text-container py-sm-2 my-sm-2">
-                    <div className="text">
+                <div className="text-container p-2 m-2">
                     <h3>Trends For You</h3>
-                    </div>
-                    
                 </div>
                 <div className="slider">
 
@@ -62,7 +59,7 @@ const MovieBanner = () =>{
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
                     </div>
                 </div>
-                    <div className="slider-arrow ">
+                    <div className="slider-arrow justify-content-between col-auto">
                         <button className="p-2" onClick={prevSlide}>&#10094;</button>
                         <button className="p-2" onClick={nextSlide}>&#10095;</button>
                     </div>

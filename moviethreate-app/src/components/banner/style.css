@@ -6,7 +6,7 @@
 }
 .slider{
     box-shadow: 0 2px 4px #c1bfbfe1;
-    border-radius: 50px;
+    border-radius: 30px;
 }
 .text-container h3{
     font-weight: bold;
@@ -16,8 +16,8 @@
 }
 
 .slide img {
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 .slider-arrow{
     position: absolute;
@@ -25,7 +25,6 @@
     transform: translate((-50%,-50%));
     width: 1296px;
     display: flex;
-    justify-content: space-between;
 }
 .slider-arrow button{
     background-color: #726b6b;

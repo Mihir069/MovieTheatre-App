@@ -1,21 +1,27 @@
+.genre{
+    font-weight: 700;
+    font-size: 25px;
+}
 .movie-card-container{
     overflow-x: auto;
     white-space: nowrap;
 }
 .movie-card{
     gap:20px;
+    height: auto;
 }
 .movie{
-    flex: 0 0 auto;
-    max-width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px #c1bfbfe1;
+    border-radius: 20px;
+
 }
 .movie img{
-    width: 100%;
-    height: auto;
+    width: 240px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
-.movie p{
+.movie p, h6{
     text-align: center;
     font-weight: bold;
 }

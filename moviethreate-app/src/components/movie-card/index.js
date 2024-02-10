@@ -10,15 +10,15 @@ const MovieCard = () =>{
         )
     }
     return(
-        <section>
-        <div className="genre-text">
+        <section className="my-5">
+        <div className="genre">
             New Incoming
         </div>
         <div className="movie-card-container">
-            <div className="movie-card d-xl-inline-flex">
+            <div className="movie-card d-inline-flex">
                 {
                     movies.map((movie,index)=>(
-                        <div key={index} className="movie col-12">
+                        <div key={index} className="movie row-cols-auto">
                             <Link to="/">
                                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={movie.name} />
                             </Link>
@@ -29,7 +29,7 @@ const MovieCard = () =>{
 
                         </div>
                     ))
-                }
+                },
             </div>
    
         </div>
