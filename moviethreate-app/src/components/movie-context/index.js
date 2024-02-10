@@ -14,7 +14,9 @@ const MovieProvider = ({children})=>{
             if(data.results){
                 const movieList = data.results.map(items=>({
                     name: items.original_title,
-                    poster:items.backdrop_path
+                    poster:items.backdrop_path,
+                    release_date:items.release_date,
+                    ratings:items.vote_average
                 }));
                 setMovies(movieList);
             }else{
