@@ -1,11 +1,12 @@
 import MovieBanner from "../banner";
 import MovieCard from "../movie-card";
+import { MovieProvider } from "../movie-context";
 const Movie = () =>{
     return(
-        <>
-        <MovieBanner/>
-        <MovieCard/>
-        </>
+        <MovieProvider>
+            <MovieBanner/>
+            <MovieCard/>
+        </MovieProvider>
     )
 }
 export default Movie;
