@@ -5,6 +5,7 @@
 .movie-card-container{
     overflow-x: auto;
     white-space: nowrap;
+    height: auto;
 }
 .movie-card{
     gap:20px;
@@ -13,17 +14,12 @@
 .movie{
     border-radius: 20px;
     box-shadow: 0 2px 4px #c1bfbfe1;
-    border-radius: 20px;
-
+    text-align: center;
 }
-.movie img{
+.movie-poster img{
     width: 240px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-}
-.movie p, h6{
-    text-align: center;
-    font-weight: bold;
 }
 .movie-card-container::-webkit-scrollbar {
     display: none; 
