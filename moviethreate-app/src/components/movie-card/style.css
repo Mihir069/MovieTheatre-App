@@ -1,4 +1,4 @@
-.genre{
+.genre-heading{
     font-weight: 700;
     font-size: 25px;
 }
@@ -9,7 +9,6 @@
 }
 .movie-card{
     gap:20px;
-    height: auto;
 }
 .movie{
     border-radius: 20px;
@@ -23,4 +22,7 @@
 }
 .movie-card-container::-webkit-scrollbar {
     display: none; 
+}
+.movie-genre{
+    font-size: 15px;
 }
