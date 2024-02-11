@@ -3,6 +3,7 @@ const MovieContext = createContext();
 
 const MovieProvider = ({children})=>{
     const [movies,setMovies] = useState([]);
+    const [playingMovies,setPlayingMovies] = useState([]);
     const [movieGenre,setMovieGenre] = useState([])
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
@@ -22,9 +23,31 @@ const MovieProvider = ({children})=>{
                 setMovies(movieList);
             }else{
                 console.log("no movie")
+                setMovies([])
             }
         })
     },[]);
+
+    useEffect(()=>{
+        fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
+            method:'GET'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.results){
+                const playingMovie = data.results.map(items=>({
+                    name: items.original_title,
+                    poster:items.backdrop_path,
+                    release_date:items.release_date,
+                    ratings:items.vote_average,
+                    genre: items.genre_ids
+                }));
+                setPlayingMovies(playingMovie)
+            }else{
+                setPlayingMovies([])
+            }
+        })
+    },[])
 
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
@@ -46,7 +69,7 @@ const MovieProvider = ({children})=>{
         })
     },[])
     return(
-        <MovieContext.Provider value={{movies,movieGenre}}>
+        <MovieContext.Provider value={{movies,movieGenre,playingMovies}}>
             {children}
         </MovieContext.Provider>
     )

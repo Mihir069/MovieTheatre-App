@@ -23,7 +23,7 @@ const MovieBanner = () =>{
             setCurrentSlide(prevSlide => (prevSlide === banners.length-1?0:prevSlide+1));
         },5000)
         return(()=>clearInterval(interval))
-    },[]);
+    },[banners.length]);
 
     const goToSlide = (index)=>{
         setCurrentSlide(index)
