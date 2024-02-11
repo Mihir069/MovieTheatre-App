@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import WatchList from "../watch-list/watch-list";
+import WatchList from "../watch-list/index";
 import Reviews from "../review/review";
 const MovieCard = ({ movie, movieGenre }) => {
     return (

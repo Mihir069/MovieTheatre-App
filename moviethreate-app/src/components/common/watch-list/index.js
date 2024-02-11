@@ -1,4 +1,4 @@
-import "./index.css"
+import "./style.css"
 const WatchList = () =>{
     return(
         <div className="btn-container justify-content-between align-items-centre ">
