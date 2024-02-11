@@ -1,0 +1,27 @@
+.footer-container {
+    background-color: #6860ff;
+    color: #fff;
+}
+  
+.footer-container h5 {
+    color: #fff;
+}
+  
+.footer-container .footer-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease; 
+}
+  
+.footer-container .footer-link:hover {
+    color: #000000; 
+}
+  
+.footer-container ul.list-unstyled {
+    padding-left: 0;
+}
+  
+.footer-container ul.list-unstyled li {
+    list-style: none;
+}
+  

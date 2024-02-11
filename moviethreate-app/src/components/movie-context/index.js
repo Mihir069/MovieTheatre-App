@@ -4,7 +4,9 @@ const MovieContext = createContext();
 const MovieProvider = ({children})=>{
     const [movies,setMovies] = useState([]);
     const [playingMovies,setPlayingMovies] = useState([]);
-    const [movieGenre,setMovieGenre] = useState([])
+    const [movieGenre,setMovieGenre] = useState([]);
+    const [populerMovie,setPopulerMovie] = useState([]);
+    const [topRates,setTopRates] = useState([]);
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
             method:'GET',
@@ -50,6 +52,48 @@ const MovieProvider = ({children})=>{
     },[])
 
     useEffect(()=>{
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
+            method:'GET'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.results){
+                const populer = data.results.map(items=>({
+                    name: items.original_title,
+                    poster:items.backdrop_path,
+                    release_date:items.release_date,
+                    ratings:items.vote_average,
+                    genre: items.genre_ids
+                }));
+                setPopulerMovie(populer)
+            }else{
+                setPopulerMovie([])
+            }
+        })
+    },[])
+
+    useEffect(()=>{
+        fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
+            method:'GET'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.results){
+                const topMovies = data.results.map(items=>({
+                    name: items.original_title,
+                    poster:items.backdrop_path,
+                    release_date:items.release_date,
+                    ratings:items.vote_average,
+                    genre: items.genre_ids
+                }));
+                setTopRates(topMovies)
+            }else{
+                setTopRates([])
+            }
+        })
+    },[])
+
+    useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
             methos:'GET'
         })
@@ -69,7 +113,7 @@ const MovieProvider = ({children})=>{
         })
     },[])
     return(
-        <MovieContext.Provider value={{movies,movieGenre,playingMovies}}>
+        <MovieContext.Provider value={{movies,movieGenre,playingMovies,populerMovie,topRates}}>
             {children}
         </MovieContext.Provider>
     )
