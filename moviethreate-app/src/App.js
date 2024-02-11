@@ -1,5 +1,4 @@
 import MovieHeader from "./components/header";
-
 import Home from "./page/home";
 import "./index.css"
 import { BrowserRouter, Route,Routes } from "react-router-dom";
