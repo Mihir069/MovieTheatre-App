@@ -1,5 +1,6 @@
 import MovieHeader from "./components/header";
-import Movie from "./components/movie";
+
+import Home from "./page/home";
 import "./index.css"
 import { BrowserRouter, Route,Routes } from "react-router-dom";
 const App = () =>{
@@ -8,7 +9,7 @@ const App = () =>{
             <BrowserRouter>
                 <MovieHeader/>
                 <Routes>
-                    <Route path="/" element={<Movie/>}/>
+                    <Route path="/" element={<Home/>}/>
                 </Routes>
                 
             </BrowserRouter>
