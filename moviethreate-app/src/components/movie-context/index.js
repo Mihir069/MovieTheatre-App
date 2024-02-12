@@ -18,6 +18,7 @@ const MovieProvider = ({children})=>{
             console.log(data);
             if(data.results){
                 const trendingmovieList = data.results.map(items=>({
+                    id:items.id,
                     name: items.original_title,
                     poster:items.backdrop_path,
                     release_date:items.release_date,
@@ -41,6 +42,7 @@ const MovieProvider = ({children})=>{
             console.log(data);
             if(data.results){
                 const movieList = data.results.map(items=>({
+                    id:items.id,
                     name: items.original_title,
                     poster:items.backdrop_path,
                     release_date:items.release_date,
@@ -63,6 +65,7 @@ const MovieProvider = ({children})=>{
         .then(data=>{
             if(data.results){
                 const playingMovie = data.results.map(items=>({
+                    id:items.id,
                     name: items.original_title,
                     poster:items.backdrop_path,
                     release_date:items.release_date,
@@ -84,6 +87,7 @@ const MovieProvider = ({children})=>{
         .then(data=>{
             if(data.results){
                 const populer = data.results.map(items=>({
+                    id:items.id,
                     name: items.original_title,
                     poster:items.backdrop_path,
                     release_date:items.release_date,
@@ -105,6 +109,7 @@ const MovieProvider = ({children})=>{
         .then(data=>{
             if(data.results){
                 const topMovies = data.results.map(items=>({
+                    id:items.id,
                     name: items.original_title,
                     poster:items.backdrop_path,
                     release_date:items.release_date,
@@ -120,7 +125,7 @@ const MovieProvider = ({children})=>{
 
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
-            methos:'GET'
+            method:'GET'
         })
         .then(res=>res.json())
         .then(data=>{
