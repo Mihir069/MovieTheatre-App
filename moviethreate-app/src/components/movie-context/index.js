@@ -7,6 +7,31 @@ const MovieProvider = ({children})=>{
     const [movieGenre,setMovieGenre] = useState([]);
     const [populerMovie,setPopulerMovie] = useState([]);
     const [topRates,setTopRates] = useState([]);
+    const [trendingMovies,setTrendingMovies] = useState([]);
+
+    useEffect(()=>{
+        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
+            method:'GET',
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.results){
+                const trendingmovieList = data.results.map(items=>({
+                    name: items.original_title,
+                    poster:items.backdrop_path,
+                    release_date:items.release_date,
+                    ratings:items.vote_average,
+                    genre: items.genre_ids
+                }));
+                setTrendingMovies(trendingmovieList);
+            }else{
+                console.log("no movie")
+                setTrendingMovies([])
+            }
+        })
+    },[]);
+
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
             method:'GET',
@@ -113,7 +138,7 @@ const MovieProvider = ({children})=>{
         })
     },[])
     return(
-        <MovieContext.Provider value={{movies,movieGenre,playingMovies,populerMovie,topRates}}>
+        <MovieContext.Provider value={{movies,movieGenre,playingMovies,populerMovie,topRates,trendingMovies}}>
             {children}
         </MovieContext.Provider>
     )

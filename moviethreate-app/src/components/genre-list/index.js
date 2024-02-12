@@ -1,5 +1,4 @@
 import { useMovie } from "../movie-context";
-import { Link } from "react-router-dom";
 import "./style.css"
 const GenreList= () =>{
     const {movieGenre} = useMovie();
