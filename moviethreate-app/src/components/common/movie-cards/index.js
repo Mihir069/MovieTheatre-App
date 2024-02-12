@@ -22,7 +22,7 @@ const MovieCard = ({ movie, movieGenre }) => {
           })}
         </div>
         <div className="watch-list">
-          <WatchList/>
+          <WatchList prop="Watch list"/>
         </div>
       </div>
     );

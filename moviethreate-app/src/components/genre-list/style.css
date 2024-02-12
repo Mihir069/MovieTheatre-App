@@ -1,0 +1,21 @@
+
+.movie-card-container {
+    width: 100%;
+    overflow-x: auto;
+}
+  
+.movie-card {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+  
+.genre-1 {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+  
