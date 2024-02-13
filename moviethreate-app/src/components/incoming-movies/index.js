@@ -19,7 +19,7 @@ const IncomignMovie= () =>{
                         movies.map((movie,index)=>(
                             <MovieCard key={index} movie={movie} movieGenre={movieGenre}/>
                         ))
-                    },
+                    }
                 </div>
     
             </div>
