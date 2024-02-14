@@ -1,13 +1,26 @@
+p{
+    margin:0;
+}
+
+.movie-title h2{
+    font-size: 50px;
+}
+.star-rating img{
+    height: 40px;
+}
 .movie-img img{
-    width: 100%;
-    height: 530px;
-    border-radius: 30px;
+    
 }
 .movie-details{
-    background-color: #05aec167;
-    border-radius: 30px;
+    background-color: #142689;
 }
-.movie-title h2{
-    text-align: center;
-    font-weight: 900;
+.movie-heading{
+    color: #ffffff;
+}
+.rating{
+    font-size: 30px;
+    overflow: hidden;
+}
+.watch-list{
+    width: auto;
 }
