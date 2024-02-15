@@ -12,11 +12,6 @@
 .movie-overview h5{
     font-weight: 700;
 }
-.tool{
-    background-color: #000000;
-    border-radius: 100%;
-}
-.tool img{
-    width: 15px;
-
+.movie-details-container{
+    border-radius: 20px;
 }

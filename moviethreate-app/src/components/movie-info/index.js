@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import WatchList from "../common/watch-list";
+import BookMark from "../common/mark/index";
+import AddToList from "../common/add-to-list";
+import AddFavourite from "../common/add-favourite";
 import "./style.css";
 const MovieInfo = () => {
     const { movieId } = useParams();
@@ -54,16 +57,14 @@ const MovieInfo = () => {
                             </div>
                             <div className="tool-bg row">
                                 <div className="tool col-1 m-2 p-2">
-                                    <img src="../svg/bookmark-solid.svg" alt="boookmark" className="m-2"/>
+                                    <BookMark/>
+                                </div>
+                                
+                                <div className="tool col-1 m-2 p-2">
+                                    <AddToList/>
                                 </div>
                                 <div className="tool col-1 m-2 p-2">
-                                    <img src="../svg/bookmark-solid.svg" alt="boookmark" className="m-2"/>
-                                </div>
-                                <div className="tool col-1 m-2 p-2">
-                                    <img src="../svg/bookmark-solid.svg" alt="boookmark" className="m-2"/>
-                                </div>
-                                <div className="tool col-1 m-2 p-2">
-                                    <img src="../svg/bookmark-solid.svg" alt="boookmark" className="m-2"/>
+                                    <AddFavourite/>
                                 </div>
                                 
                             </div>
