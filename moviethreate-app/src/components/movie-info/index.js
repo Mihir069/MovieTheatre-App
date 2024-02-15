@@ -62,10 +62,20 @@ const MovieInfo = () => {
         <>
             {selectedMovie && (
                 <div className="movie-details-container">
-                    <div className="movie-details-card ">
-                        <div className="movie-details p-4">
+                    <div className="movie-details-card row">
+                        <div className="movie-details p-4 col-6">
                             <div className="movie-title">
                                 {selectedMovie.title}
+                            </div>
+                            <div className="movie-release d-inline">
+                                {selectedMovie.release_date}|
+                                {selectedMovie.genres}|
+                                {selectedMovie.runtime}m
+                            </div>
+                        </div>
+                        <div className="movie-details p-4 col-6">
+                            <div className="movie-star">
+                                <img src="../svg/star-solid.svg"/>
                             </div>
                             <div className="movie-release d-inline">
                                 {selectedMovie.release_date}|
