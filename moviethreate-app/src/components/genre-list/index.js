@@ -17,10 +17,7 @@ const GenreList= () =>{
                 <div className="movie-card d-inline-flex">
                     {
                         movieGenre.map((movie,index)=>(
-                            
                             <div key={index} className="genre-1">{movie.genre_name}</div>
-                            
-                            
                         ))
                     }
                 </div>

@@ -1,17 +1,8 @@
-.movie-details-container{
-    background-color: #3242c0a5;
-}
-.movie-img img{
-    height: 430px;
-    width: 90%;
+.movie-details {
+    background-color: #000000e1;
+    color: #858282;
 }
 .movie-title{
-    font-weight: 800;
     font-size: 45px;
-}
-.movie-overview h5{
-    font-weight: 700;
-}
-.movie-details-container{
-    border-radius: 20px;
+    font-weight: 800;
 }

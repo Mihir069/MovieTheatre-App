@@ -1,0 +1,13 @@
+.backdrop-images-container{
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+
+}
+.backdrop-images{
+    display: flex;
+}
+.backdrop-images img{
+    flex: 0 0 auto;
+    
+}
