@@ -1,0 +1,15 @@
+.movie-cast ul{
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+.movie-cast-profile{
+    margin-right: 10px;
+}
+.movie-cast-profile img{
+    width: 100px;
+}
+.movie-cast{
+    overflow-x: auto;
+}
