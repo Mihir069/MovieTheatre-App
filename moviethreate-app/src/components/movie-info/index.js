@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import WatchList from "../common/watch-list";
 import BookMark from "../common/mark/index";
 import AddToList from "../common/add-to-list";
 import AddFavourite from "../common/add-favourite";
