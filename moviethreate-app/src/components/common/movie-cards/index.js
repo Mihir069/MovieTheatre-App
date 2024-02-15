@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import WatchList from "../watch-list/index";
 import Reviews from "../review/review";
+import "./style.css";
 const MovieCard = ({ movie, movieGenre }) => {
     return (
       <div className="movie row-cols-auto">
