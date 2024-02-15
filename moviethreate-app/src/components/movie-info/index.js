@@ -89,7 +89,7 @@ const MovieInfo = () => {
             {selectedMovie && (
                 <div className="movie-details-container">
                     <div className="movie-details-card row">
-                        <div className="movie-details p-4 col-6">
+                        <div className="movie-details p-4 col-6 my-3">
                             <div className="movie-title">
                                 {selectedMovie.title}
                             </div>
@@ -99,7 +99,7 @@ const MovieInfo = () => {
                                 {selectedMovie.runtime}m
                             </div>
                         </div>
-                        <div className="movie-details p-4 col-6">
+                        <div className="movie-details p-4 col-6 my-3">
                             <div className="movie-star  d-inline">
                                 <img src="../svg/star-solid.svg" alt="star" />
                                 <span className="rating">{selectedMovie.ratings}/10</span>
@@ -109,8 +109,8 @@ const MovieInfo = () => {
                             <div className="movie-main-img col-auto">
                                 <MovieImages movieImages={movieImages}/>
                             </div>
-                            <div className="movie-overview col-auto">
-                                <p>{selectedMovie.overview}</p>
+                            <div className="movie-overview my-3">
+                                <p><strong>Overview :</strong>{selectedMovie.overview}</p>
                             </div>
                             
                         </div>

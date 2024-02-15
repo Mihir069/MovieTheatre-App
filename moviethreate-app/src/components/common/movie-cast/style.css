@@ -1,15 +1,22 @@
-.movie-cast ul{
+.movie-cast{
+    scrollbar-width: none;
+}
+.movie-cast .cast{
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
-    scrollbar-width: none;
+    
 }
 .movie-cast-profile{
-    margin-right: 10px;
+    box-shadow: 0 2px 4px #c1bfbfe1;
+    text-align: center;
 }
 .movie-cast-profile img{
-    width: 100px;
+    width: 150px;
 }
 .movie-cast{
     overflow-x: auto;
+}
+.movie-cast-name h6{
+    color: #6f6f6f;
 }
