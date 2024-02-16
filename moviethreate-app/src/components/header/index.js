@@ -16,14 +16,14 @@ const MovieHeader = () => {
 
     return (
         <>
-            <div className="navbar container">
+            <div className="navbar container mt-5">
                 <div className="row align-items-center py-2 my-2">
                     <div className="col-3 cursor">
                         <Link to="/">
                             <Logo />
                         </Link>
                     </div>
-                    <div className="col-6  ">
+                    <div className="col-6 search-bar">
                         <SearchBar />
                     </div>
                     <div className="col-3">

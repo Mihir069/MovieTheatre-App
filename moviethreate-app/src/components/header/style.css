@@ -14,8 +14,12 @@
 }
 .accounts{
     position: absolute;
-    top: 25px;
+    top: 40px;
     right: 80px;
+}
+.search-bar{
+    position: relative;
+    top: -24px;
 }
 .a {
     text-decoration: none;
