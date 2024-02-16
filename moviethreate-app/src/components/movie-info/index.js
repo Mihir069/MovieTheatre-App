@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MovieImages from "../common/movie-Image";
 import MovieCast from "../common/movie-cast";
-
 import "./style.css";
 const MovieInfo = () => {
     const { movieId } = useParams();
@@ -140,18 +139,17 @@ const MovieInfo = () => {
                     </div>
                 </div>
             )}
-            <div>
-                <h1>Movie Reviews</h1>
-                <div className="review-container">
-                    {review.map(review => (
-                    <div key={review.id} className="review">
-                        <h2>{review.author}</h2>
-                        {review.rating && <p>Rating: {review.rating}</p>}
-                        <p>{review.content}</p>
-                        <p>Created at: {review.created_at}</p>
-                    </div>
-                    ))}
+            
+            <div className="review-container">
+                <h2>Movie Reviews</h2>
+                {review.map((review,movie) => (
+                <div key={review.id} className="review">
+                    <h2>{review.author}</h2>
+                    {review.rating && <p>Rating: {review.rating}</p>}
+                    <p>{review.content}</p>
+                    <p>Created at: {review.created_at}</p>
                 </div>
+                ))}
             </div>
             {!selectedMovie && <p>Loading...</p>}
             
