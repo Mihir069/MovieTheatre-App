@@ -14,7 +14,8 @@
 }
 .accounts{
     position: absolute;
-    top: 12px;
+    top: 25px;
+    right: 80px;
 }
 .a {
     text-decoration: none;
