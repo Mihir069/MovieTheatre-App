@@ -21,6 +21,10 @@
 }
 .review-container {
     margin-top: 20px;
+    overflow-y: auto;
+    white-space: nowrap;
+    height: 200px;
+    scrollbar-width: none;
 }
   
 .review {

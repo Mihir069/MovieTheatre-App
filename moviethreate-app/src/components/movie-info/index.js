@@ -139,18 +139,20 @@ const MovieInfo = () => {
                     </div>
                 </div>
             )}
-            
-            <div className="review-container">
+            <div className="my-2">
                 <h2>Movie Reviews</h2>
-                {review.map((review,movie) => (
-                <div key={review.id} className="review">
-                    <h2>{review.author}</h2>
-                    {review.rating && <p>Rating: {review.rating}</p>}
-                    <p>{review.content}</p>
-                    <p>Created at: {review.created_at}</p>
+                <div className="review-container">
+                    {review.map((review,movie) => (
+                    <div key={review.id} className="review">
+                        <h2>{review.author}</h2>
+                        {review.rating && <p>Rating: {review.rating}</p>}
+                        <p>{review.content}</p>
+                        <p>Created at: {review.created_at}</p>
+                    </div>
+                    ))}
                 </div>
-                ))}
             </div>
+
             {!selectedMovie && <p>Loading...</p>}
             
         </>
