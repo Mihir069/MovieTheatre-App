@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
     const [search, setSearch] = useState('');
     const [movieSearched, setMovieSearches] = useState([]);
-    const [isFocused, setIsFocused] = useState(false);
+
 
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -26,20 +27,25 @@ const SearchBar = () => {
             setMovieSearches([]);
         }
     }, [search]);
-
+    const handleMovieClick = () =>{
+        setSearch('')
+    }
     return (
         <>
             <div className="search-bar d-flex">
-                <input type="text" className="custom-input" placeholder="Search movies..." onChange={handleChange} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} />
+                <input type="text" className="custom-input" placeholder="Search movies..." onChange={handleChange} />
                 <span className="input-group-text p-2">
                     <img src="./svg/magnifying-glass-solid.svg" alt="search-icon" className="img-fluid" />
                 </span>
             </div>
-            <div className={`search-results ${isFocused ? 'open' : ''}`}>
+            <div className={`search-results ${search || movieSearched.length>0 ? 'open' : ''}`}>
                 {movieSearched.map((movie) => (
                     <div key={movie.id} className="row">
+                        <Link to={`/movie/${movie.id}`} onClick={handleMovieClick}>
                         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
                         <h6 className="col-6">{movie.title}</h6>
+                        </Link>
+
                     </div>
                 ))}
             </div>

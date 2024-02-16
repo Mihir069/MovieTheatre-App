@@ -16,7 +16,7 @@ const MovieHeader = () => {
 
     return (
         <>
-            <div className="navbar container mt-5">
+            <div className="navbar container mt-4">
                 <div className="row align-items-center py-2 my-2">
                     <div className="col-3 cursor">
                         <Link to="/">
