@@ -12,7 +12,7 @@
   
 .custom-input:focus {
     border-color: #007bff; 
-    box-shadow: 0 0 0 0.2rem #0c2d51;
+    box-shadow: 0 2px 4px #c1bfbfe1;
 }
 
 .img-fluid {

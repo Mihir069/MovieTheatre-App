@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import MovieImages from "../common/movie-Image";
 import MovieCast from "../common/movie-cast";
 import "./style.css";
+import YouTube from "react-youtube";
 const MovieInfo = () => {
     const { movieId } = useParams();
     const [selectedMovie, setSelectedMovie] = useState([]);
     const [movieImages,setMovieImages] = useState([]);
     const [movieCast,setMovieCast] = useState([]);
     const [review,setReview] = useState([]);
+    const [video,setVideo] = useState([])
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`, {
             method: 'GET'
@@ -105,6 +107,21 @@ const MovieInfo = () => {
             }
         })
     })
+
+    useEffect(()=>{
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
+            method:"GET"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log("done")
+            if (data.results && data.results.length > 0) {
+                const trailer = data.results.find(clip => clip.type === "Trailer")
+                if(trailer)
+                setVideo(trailer.key);
+            }
+        })
+    })
     return (
         <>
             {selectedMovie && (
@@ -133,7 +150,7 @@ const MovieInfo = () => {
                             <div className="movie-overview my-3">
                                 <p><strong>Overview :</strong>{selectedMovie.overview}</p>
                             </div>
-                            
+                            <YouTube videoId={video}/>
                         </div>
                         <MovieCast movieCast={movieCast}/>
                     </div>
