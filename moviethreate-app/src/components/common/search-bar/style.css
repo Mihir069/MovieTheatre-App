@@ -1,10 +1,6 @@
-/* .custom-input {
-    width: 100%;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ced4da; 
-} */
+.search-bar{
+    overflow: hidden;
+}
 .custom-input{
     width: 80%;
     font-size: 14px;
@@ -24,8 +20,13 @@
     background-color: #007bff;
     padding: 6px;
 }
-@media (max-width: 576px){
-    .search-bar{
-        display: none;
-    }
+
+/* .search-results{
+    height: 100px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    box-shadow: 0 2px 4px #c1bfbfe1;
+} */
+.search-results img{
+    width: 80px;
 }

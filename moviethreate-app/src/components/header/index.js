@@ -26,8 +26,8 @@ const MovieHeader = () => {
                     <div className="col-6  ">
                         <SearchBar />
                     </div>
-                    <div className="col-3  ">
-                        <div className="mx-5 inline-end d-flex">
+                    <div className="col-3">
+                        <div className="mx-5 inline-end d-flex accounts">
                             <div className="book-mark">
                                 <BookMark />
                             </div>
