@@ -10,8 +10,8 @@
     font-weight: 800;
 }
 .movie-star img{
-    width: 40px;
-    top: 4px;;
+    width: 45px;
+
 }
 .rating{
     font-size: 20px;
@@ -19,4 +19,45 @@
 .movie-overview{
     box-shadow: 0 2px 4px #c1bfbfe1;
 }
+.review-container {
+    margin-top: 20px;
+  }
+  
+  .review {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .review h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .review p {
+    margin: 5px 0;
+    color: #555;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    max-height: 3em; 
+  }
+  
+  .review p.expanded {
+    max-height: none; 
+    white-space: normal; 
+  }
+  
+  .review p:last-child {
+    color: #888;
+    font-size: 12px;
+  }
+  
+  .see-more {
+    cursor: pointer;
+    color: blue;
+  }
+  
 
