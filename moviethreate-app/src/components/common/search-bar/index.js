@@ -46,9 +46,7 @@ const SearchBar = () => {
                                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="col-auto"/>
                                 <h6 className="col-auto title my-5 mx-4">{movie.title}</h6>
                             </div>
-
                         </Link>
-
                     </div>
                 ))}
             </div>

@@ -4,13 +4,16 @@ import MovieImages from "../common/movie-Image";
 import MovieCast from "../common/movie-cast";
 import "./style.css";
 import YouTube from "react-youtube";
+import MovieSimilerCard from "../common/movie-similer-card";
 const MovieInfo = () => {
     const { movieId } = useParams();
     const [selectedMovie, setSelectedMovie] = useState([]);
     const [movieImages,setMovieImages] = useState([]);
     const [movieCast,setMovieCast] = useState([]);
     const [review,setReview] = useState([]);
-    const [video,setVideo] = useState([])
+    const [video,setVideo] = useState([]);
+    const [similerMovies,setSimilerMovies] = useState([]);
+
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`, {
             method: 'GET'
@@ -87,6 +90,30 @@ const MovieInfo = () => {
             console.error("Error fetching movie data:", error);
         });
     }, [movieId]);
+
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`, {
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data) {
+                const similer = data.results.map((item)=>({
+                    id: item.id,
+                    title: item.original_title,
+                    poster: item.backdrop_path,
+                }));
+                setSimilerMovies(similer);
+            } else {
+                setSimilerMovies([]);
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching movie data:", error);
+        });
+    }, [movieId]);
+
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
             method:'GET'
@@ -106,7 +133,7 @@ const MovieInfo = () => {
                 setReview([]);
             }
         })
-    })
+    },[movieId])
 
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
@@ -121,7 +148,7 @@ const MovieInfo = () => {
                 setVideo(trailer.key);
             }
         })
-    })
+    },[movieId])
     return (
         <>
             {selectedMovie && (
@@ -152,11 +179,15 @@ const MovieInfo = () => {
                             </div>
                             <YouTube videoId={video}/>
                         </div>
-                        <MovieCast movieCast={movieCast}/>
+                        <div className="movie-cast-container">
+                            <h3>Cast</h3>
+                            <MovieCast movieCast={movieCast}/>
+                        </div>
+                        
                     </div>
                 </div>
             )}
-            <div className="my-2">
+            <div className="my-5 py-5">
                 <h2>Movie Reviews</h2>
                 <div className="review-container">
                     {review.map((review,movie) => (
@@ -167,6 +198,14 @@ const MovieInfo = () => {
                         <p>Created at: {review.created_at}</p>
                     </div>
                     ))}
+                </div>
+            </div>
+            <div className="more-movies">
+                <h1>More Like This</h1>
+                <div className="similer-movies-container">
+                    <div className="similer-movie d-inline-flex my-4">
+                        <MovieSimilerCard similerMovies={similerMovies}/>
+                    </div>
                 </div>
             </div>
 

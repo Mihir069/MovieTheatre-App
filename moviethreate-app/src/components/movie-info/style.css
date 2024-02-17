@@ -57,10 +57,11 @@
     color: #888;
     font-size: 12px;
 }
-  
-.see-more {
-    cursor: pointer;
-    color: blue;
+.similer-movies-container{
+    overflow-x: auto;
+    white-space: nowrap;
+    height: auto;
+    scrollbar-width: none;
 }
   
 
