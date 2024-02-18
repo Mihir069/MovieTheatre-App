@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
+import {  getSearchResult } from '../../../services';
+import { searchAPI } from '../../../config';
 
 const SearchBar = () => {
     const [search, setSearch] = useState('');
@@ -13,16 +15,10 @@ const SearchBar = () => {
 
     useEffect(() => {
         if (search.trim() !== '') {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=27e7bd3c69a085aeeb14e90dccf23dfe&query=${search}`, {
-                method: 'GET'
-            })
-            .then(res => res.json())
-            .then(data => {
-                setMovieSearches(data.results);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+            const searchResult = getSearchResult(searchAPI, search);
+            if(searchResult){
+                setMovieSearches(searchResult);
+            }
         } else {
             setMovieSearches([]);
         }

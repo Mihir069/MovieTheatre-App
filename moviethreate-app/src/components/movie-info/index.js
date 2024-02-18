@@ -201,7 +201,7 @@ const MovieInfo = () => {
                 </div>
             </div>
             <div className="more-movies">
-                <h1>More Like This</h1>
+                <h2>More Like This</h2>
                 <div className="similer-movies-container">
                     <div className="similer-movie d-inline-flex my-4">
                         <MovieSimilerCard similerMovies={similerMovies}/>

@@ -3,6 +3,14 @@ import WatchList from "../watch-list/index";
 import Reviews from "../review/review";
 import "./style.css";
 const MovieCard = ({ movie, movieGenre }) => {
+
+  const getMovieGenere = () => {
+    const genere =  movie.genre.map((genreId, index) => {
+      const genre = movieGenre.find(genre => genre.id === genreId);
+      return <div key={index} className="genre d-inline m-1">{genre && genre.genre_name}</div>;
+    })
+    return genere;
+  }
     return (
       <div className="movie row-cols-auto">
         <div className="movie-poster">
@@ -17,10 +25,7 @@ const MovieCard = ({ movie, movieGenre }) => {
           <Reviews stars={movie.ratings}/>
         </div>
         <div className="movie-genre my-2 py-2">
-          {movie.genre.map((genreId, index) => {
-            const genre = movieGenre.find(genre => genre.id === genreId);
-            return <div key={index} className="genre d-inline m-1">{genre && genre.genre_name}</div>;
-          })}
+          {getMovieGenere()}
         </div>
         <div className="watch-list">
           <WatchList prop="Watch list"/>

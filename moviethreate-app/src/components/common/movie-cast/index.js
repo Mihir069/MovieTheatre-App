@@ -1,5 +1,7 @@
 import "./style.css";
-const MovieCast = ({movieCast}) =>{
+const MovieCast = ({movieCast = []}) =>{
+
+
     return(
         <div className="movie-cast">
             <div className=" cast d-inline-flex">

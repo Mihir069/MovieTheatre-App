@@ -15,17 +15,17 @@ const Footer = () => {
                         <ul className="list-unstyled">
                             <li><Link to="/" className="footer-link">Home</Link></li>
                             <li><Link to="/" className="footer-link">About</Link></li>
-                            <li><Link to="/" className="footer-link">Services</Link></li>
+                            <li><Link to="/" className="footer-link">Blogs</Link></li>
                             <li><Link to="/" className="footer-link">Contact</Link></li>
                         </ul>
                     </div>
                     <div className="col-4">
                         <h5>Contact Us</h5>
                         <address>
-                            <strong>Company Name</strong><br />
-                            123 Street Name, City<br />
-                            Country<br />
-                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                            <strong> Name</strong><br />
+                            New Delhi<br />
+                            India<br />
+                            <abbr title="Phone">P:</abbr> (123)XXXXXXX
                         </address>
                     </div>
                 </div>
