@@ -143,11 +143,4 @@ const MovieProvider = ({children})=>{
     )
 
 };
-const useMovie = () =>{
-    const context = useContext(MovieContext);
-    if(!context){
-        throw new Error('error!!')
-    }
-    return context;
-}
-export {useMovie,MovieProvider}
+export {MovieContext,MovieProvider}

@@ -1,7 +1,8 @@
-import { useMovie } from "../movie-context";
+import { useContext } from "react";
+import { MovieContext } from "../movie-context";
 import "./style.css"
 const GenreList= () =>{
-    const {movieGenre} = useMovie();
+    const {movieGenre} = useContext(MovieContext);
     console.log("Movies",movieGenre)
     if(!movieGenre){
         return(

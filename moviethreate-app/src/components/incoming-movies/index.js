@@ -1,7 +1,9 @@
-import { useMovie } from "../movie-context";
+
 import MovieCard from "../common/movie-cards";
+import { MovieContext } from "../movie-context";
+import { useContext } from "react";
 const IncomignMovie= () =>{
-    const {movies,movieGenre} = useMovie();
+    const {movies,movieGenre} = useContext(MovieContext)
     console.log("Movies",movies)
     if(!movies){
         return(

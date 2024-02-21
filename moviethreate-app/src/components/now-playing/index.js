@@ -1,7 +1,8 @@
-import { useMovie } from "../movie-context"
+import { MovieContext } from "../movie-context";
 import MovieCard from "../common/movie-cards";
+import { useContext } from "react";
 const NowPlaying = () =>{
-    const {playingMovies,movieGenre} = useMovie();
+    const {playingMovies,movieGenre} = useContext(MovieContext);
     if(!playingMovies){
         return(
             <div>Loading....</div>

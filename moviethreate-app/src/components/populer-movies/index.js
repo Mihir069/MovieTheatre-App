@@ -1,7 +1,8 @@
-import { useMovie } from "../movie-context"
+import { MovieContext } from "../movie-context";
 import MovieCard from "../common/movie-cards";
+import { useContext } from "react";
 const PopulerMovies = () =>{
-    const {populerMovie,movieGenre} = useMovie();
+    const {populerMovie,movieGenre} = useContext(MovieContext);
     if(!populerMovie){
         return(
             <div>Loading....</div>
