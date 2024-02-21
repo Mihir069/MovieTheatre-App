@@ -34,12 +34,7 @@ const MovieProvider = ({children})=>{
                     setTrendingMovies([])
                 }
             })
-        }
 
-    },[fetchedData]);
-
-    useEffect(()=>{
-        if(!fetchedData){
             fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
                 method:'GET',
             })
@@ -61,12 +56,7 @@ const MovieProvider = ({children})=>{
                     setMovies([])
                 }
             })
-        }
 
-    },[fetchedData]);
-
-    useEffect(()=>{
-        if(!fetchedData){
             fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
                 method:'GET'
             })
@@ -86,12 +76,7 @@ const MovieProvider = ({children})=>{
                     setPlayingMovies([])
                 }
             })
-        }
 
-    },[fetchedData])
-
-    useEffect(()=>{
-        if(!fetchedData){
             fetch(`https://api.themoviedb.org/3/movie/popular?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
                 method:'GET'
             })
@@ -111,11 +96,7 @@ const MovieProvider = ({children})=>{
                     setPopulerMovie([])
                 }
             })
-        }
-    },[fetchedData])
 
-    useEffect(()=>{
-        if(!fetchedData){
             fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
                 method:'GET'
             })
@@ -135,12 +116,7 @@ const MovieProvider = ({children})=>{
                     setTopRates([])
                 }
             })
-        }
 
-    },[fetchedData])
-
-    useEffect(()=>{
-        if(fetchedData){
             fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`,{
                 method:'GET'
             })
@@ -159,8 +135,7 @@ const MovieProvider = ({children})=>{
     
             })
         }
-
-    },[fetchedData])
+    },[fetchedData]);
     return(
         <MovieContext.Provider value={{movies,movieGenre,playingMovies,populerMovie,topRates,trendingMovies}}>
             {children}
