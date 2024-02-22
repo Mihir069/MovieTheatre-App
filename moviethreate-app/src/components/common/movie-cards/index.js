@@ -19,7 +19,7 @@ const MovieCard = ({ movie, movieGenre }) => {
           </Link>
         </div> 
         <div className="movie-name m-3">
-          <h6>{movie.name}</h6>
+          <h6>{movie.title||movie.name}</h6>
         </div>
         <div className="movie-rating my-2">
           <Reviews stars={movie.ratings}/>
