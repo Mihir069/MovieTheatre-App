@@ -12,7 +12,7 @@ const MovieCard = ({ movie, movieGenre }) => {
     return genere;
   }
     return (
-      <div className="movie row-cols-auto">
+      <div className="movie ">
         <div className="movie-poster">
           <Link to={`/movie/${movie.id}`}>
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={movie.name} />

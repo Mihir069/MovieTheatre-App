@@ -1,5 +1,4 @@
 import MovieBanner from "../../components/banner";
-import { MovieProvider } from "../../components/movie-context";
 import IncomignMovie from "../../components/incoming-movies";
 import NowPlaying from "../../components/now-playing";
 import PopulerMovies from "../../components/populer-movies";
@@ -9,7 +8,7 @@ import TrendingMovies from "../../components/trendings";
 
 const Home = () =>{
     return(
-        <MovieProvider>
+        <>
             <MovieBanner/>
             <GenreList/>
             <TrendingMovies/>
@@ -17,7 +16,7 @@ const Home = () =>{
             <NowPlaying/>
             <PopulerMovies/>
             <TopRatedMovies/>
-        </MovieProvider>
+        </>
     )
 }
 export default Home; 
