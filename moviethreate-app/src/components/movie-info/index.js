@@ -1,13 +1,20 @@
 
-import { useContext } from "react";
-import { MovieContext } from "../movie-context";
+import { useContext, useEffect } from "react";
 import MovieImages from "../common/movie-Image";
 import MovieCast from "../common/movie-cast";
+import { MovieContext } from "../movie-context";
 import "./style.css";
 import YouTube from "react-youtube";
 import MovieSimilerCard from "../common/movie-similer-card";
 const MovieInfo = () => {
-    const {selectedMovie,movieImages,movieCast,review,video,similerMovies} = useContext(MovieContext);
+
+    const {movieId,fetchMovieDetails,selectedMovie,movieImages,movieCast,review,video,similerMovies}=useContext(MovieContext);
+    console.log(movieId,"dehd")
+    useEffect(()=>{
+        if(movieId){
+            fetchMovieDetails();
+        }
+    },[movieId,fetchMovieDetails]);
     return (
         <>
             {selectedMovie && (
