@@ -3,6 +3,7 @@ import MovieCard from "../common/movie-cards";
 import { useContext } from "react";
 const PopulerMovies = () =>{
     const {populerMovie,movieGenre} = useContext(MovieContext);
+    console.log("popular ",populerMovie)
     if(!populerMovie){
         return(
             <div>Loading....</div>

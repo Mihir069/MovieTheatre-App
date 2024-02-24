@@ -47,20 +47,20 @@ const MovieHeader = () => {
                         X
                     </span>
                 </div>
-                <ul className="slider-menu m-2 p-2">
-                    <li className="px-3 menu-links">
+                <ul className="slider-menu ">
+                    <li className="menu-links">
                         <Link to="/">Home</Link>
                     </li>
-                    <li className="px-3">
+                    <li className="menu-links">
                         <Link to="/">About Us</Link>
                     </li>
-                    <li className="px-3">
+                    <li className="menu-links">
                         <Link to="/">Genre</Link>
                     </li>
-                    <li className="px-3">
+                    <li className="menu-links">
                         <Link to="/">Watchlist</Link>
                     </li>
-                    <li className="px-3">
+                    <li className="menu-links">
                         <Link to="/">Blog</Link>
                     </li>
                 </ul>

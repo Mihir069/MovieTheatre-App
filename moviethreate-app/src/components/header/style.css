@@ -87,7 +87,15 @@
 .menu-close-icon:hover {
     color: #333; 
 }
-
+.menu-slide li{
+    cursor: pointer;
+}
+.menu-slide li:hover{
+    background-color: #ffffff;
+}
+.menu-slide a:hover{
+    color: #555;
+}
 @media (max-width: 768px) {
     .menu-slide {
         width: 100%;
