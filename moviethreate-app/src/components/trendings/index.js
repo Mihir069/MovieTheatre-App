@@ -9,6 +9,9 @@ const TrendingMovies = () =>{
             <div>Loading....</div>
         )
     }
+    const movieCard = trendingMovies.map((movie,index)=>(
+        <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
+    ));
     return(
         <section className="my-5">
             <div className="genre-heading">
@@ -16,11 +19,7 @@ const TrendingMovies = () =>{
             </div>
             <div className="movie-card-container">
                 <div className="movie-card d-inline-flex">
-                    {
-                        trendingMovies.map((movie,index)=>(
-                            <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
-                        ))
-                    },
+                    {movieCard}
                 </div>
             </div>
         </section>

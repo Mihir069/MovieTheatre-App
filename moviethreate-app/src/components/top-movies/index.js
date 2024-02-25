@@ -9,6 +9,9 @@ const TopRatedMovies = () =>{
             <div>Loading....</div>
         )
     }
+    const movieCard =topRates.map((movie,index)=>(
+        <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
+    ))
     return(
         <section className="my-5">
             <div className="genre-heading">
@@ -16,11 +19,7 @@ const TopRatedMovies = () =>{
             </div>
             <div className="movie-card-container">
                 <div className="movie-card d-inline-flex">
-                    {
-                        topRates.map((movie,index)=>(
-                            <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
-                        ))
-                    },
+                    {movieCard}
                 </div>
             </div>
         </section>

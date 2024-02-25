@@ -9,6 +9,9 @@ const GenreList= () =>{
             <div>Loading.....</div>
         )
     }
+    const genre = movieGenre.map((movie,index)=>(
+        <div key={index} className="genre-1">{movie.genre_name}</div>
+    ))
     return(
         <section className="my-5">
             <div className="genre-heading">
@@ -16,11 +19,7 @@ const GenreList= () =>{
             </div>
             <div className="movie-card-container">
                 <div className="movie-card d-inline-flex">
-                    {
-                        movieGenre.map((movie,index)=>(
-                            <div key={index} className="genre-1">{movie.genre_name}</div>
-                        ))
-                    }
+                    {genre}
                 </div>
     
             </div>

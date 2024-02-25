@@ -18,22 +18,38 @@ const MovieProvider = ({ children }) => {
     const [review,setReview] = useState([]);
     const [video,setVideo] = useState([]);
     const [similerMovies,setSimilerMovies] = useState([]);
-    const {movieId} = useParams();
+   const {movieId} = useParams();
  
 
-    useEffect(() => {
+   const fetchMovies =  async (endpoint) => {
+    // const response = await fetch(`https://api.themoviedb.org/3/${endpoint}?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`);
+    // if (!response.ok) {
+    //     throw new Error("Network response was not ok");
+    // }
+    const data =  await fetchApiData(endpoint);
+   // console.log("----await log----", data)
+    if (data) {
+        return data;
+    }
+    return [];
+};
+
+
+    useEffect(  () => {
         const fetchData = async () => {
             try {
-                if (!fetchedData) {
+                console.log( '----1------');
+               // if (!fetchedData) {
                     const [trendingData, upcomingData, nowPlayingData, popularData, topRatedData, genreData] = await Promise.all([
                         fetchMovies("trending/all/day"),
-                        fetchMovies("movie/upcoming"),
-                        fetchMovies("movie/now_playing"),
-                        fetchMovies("movie/popular"),
-                        fetchMovies("movie/top_rated"),
-                        fetchGenre("genre/movie/list")
+                    //    fetchMovies("movie/upcoming"),
+                    //    fetchMovies("movie/now_playing"),
+                    //     fetchMovies("movie/popular"),
+                    //    fetchMovies("movie/top_rated"),
+                    //    fetchGenre("genre/movie/list")
                     ]);
 
+                    console.log(trendingData, '----2------');
                     setTrendingMovies(trendingData);
                     setMovies(upcomingData);
                     setPlayingMovies(nowPlayingData);
@@ -41,14 +57,15 @@ const MovieProvider = ({ children }) => {
                     setTopRates(topRatedData);
                     setMovieGenre(genreData);
                     setFetchedData(true);
-                }
+               // }
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
 
+        console.log( '----------');
         fetchData();
-    }, [fetchedData]);
+    }, []);
 
     useEffect(()=>{
         const fetchMovieDetails = async () =>{
@@ -76,20 +93,8 @@ const MovieProvider = ({ children }) => {
 
 
 
-        fetchMovieDetails();
+      //  fetchMovieDetails();
     },[movieId])
-    const fetchMovies = async (endpoint) => {
-        // const response = await fetch(`https://api.themoviedb.org/3/${endpoint}?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`);
-        // if (!response.ok) {
-        //     throw new Error("Network response was not ok");
-        // }
-        const data = await  fetchApiData(endpoint);
-        console.log("await log",data.results)
-        if (data.results) {
-            return data.results;
-        }
-        return [];
-    };
 
     const fetchGenre = async (endpoint) => {
         // const response = await fetch(`https://api.themoviedb.org/3/${endpoint}?api_key=27e7bd3c69a085aeeb14e90dccf23dfe`);

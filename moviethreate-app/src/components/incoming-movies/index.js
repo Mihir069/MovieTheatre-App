@@ -10,6 +10,9 @@ const IncomignMovie= () =>{
             <div>Loading.....</div>
         )
     }
+    const movieCard = movies.map((movie,index)=>(
+        <MovieCard key={index} movie={movie} movieGenre={movieGenre}/>
+    ))
     return(
         <section className="my-5">
             <div className="genre-heading">
@@ -17,11 +20,7 @@ const IncomignMovie= () =>{
             </div>
             <div className="movie-card-container">
                 <div className="movie-card d-inline-flex">
-                    {
-                        movies.map((movie,index)=>(
-                            <MovieCard key={index} movie={movie} movieGenre={movieGenre}/>
-                        ))
-                    }
+                    {movieCard}
                 </div>
     
             </div>

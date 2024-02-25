@@ -15,6 +15,15 @@ const MovieInfo = () => {
             fetchMovieDetails();
         }
     },[movieId,fetchMovieDetails]);
+
+    const reviews = review.map((review,movie) => (
+        <div key={review.id} className="review">
+            <h2>{review.author}</h2>
+            {review.rating && <p>Rating: {review.rating}</p>}
+            <p>{review.content}</p>
+            <p>Created at: {review.created_at}</p>
+        </div>
+    ))
     return (
         <>
             {selectedMovie && (
@@ -56,14 +65,7 @@ const MovieInfo = () => {
             <div className="my-5 py-5">
                 <h2>Movie Reviews</h2>
                 <div className="review-container">
-                    {review.map((review,movie) => (
-                    <div key={review.id} className="review">
-                        <h2>{review.author}</h2>
-                        {review.rating && <p>Rating: {review.rating}</p>}
-                        <p>{review.content}</p>
-                        <p>Created at: {review.created_at}</p>
-                    </div>
-                    ))}
+                    {reviews}
                 </div>
             </div>
             <div className="more-movies">

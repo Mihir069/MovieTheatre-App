@@ -4,7 +4,7 @@ import SearchBar from "../common/search-bar";
 import BookMark from "../common/book-marks";
 import User from "../common/user";
 import Menu from "../common/menu";
-import "./style.css";
+import "./style.scss";
 import { Link } from "react-router-dom";
 
 const MovieHeader = () => {
