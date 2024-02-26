@@ -1,24 +1,41 @@
 import { apiURL } from '../config';
 import { keyAPI } from '../config';
-export const getSearchResult = (url, query) => {
+// export const getSearchResult = (url, query) => {
+//     const apiPath = `${apiURL}${url}&query=${query}`;
+//     console.log("search",apiPath)
+//     fetch(apiPath, {
+//         method: 'GET'
+//     })
+//     .then(res => res.json())
+//     .then(data => {
+//        return(data.results);
+//     })
+//     .catch(error => {
+//         console.error('Error fetching data:', error);
+//     });
+// };
+
+export const getSearchResult = async (url,query)=>{
     const apiPath = `${apiURL}${url}&query=${query}`;
     console.log("search",apiPath)
-    fetch(apiPath, {
-        method: 'GET'
+    const response = await fetch(apiPath,{
+        method:"GET",
     })
-    .then(res => res.json())
-    .then(data => {
-       return(data.results);
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
-};
+    const data = await response.json();
 
+    if(data.results){
+        const results = data.results.map((items)=>({
+            id:items.id,
+            poster_path:items.poster_path || items.backdrop_path,
+            title:items.original_name|| items.original_title
+        }));
+        return results;
+    }
+    return [];
+}
 export const fetchApiData =  async (url) =>{
     const apiPath = `${apiURL}${url}${keyAPI}`;
-  //  console.log("api",apiPath)
-  const response = await fetch(apiPath,{
+    const response = await fetch(apiPath,{
         method:'GET',
     });
     const data = await response.json();
