@@ -49,3 +49,14 @@ export const fetchDetailApi = async (url) =>{
         return data;
     }
 }
+
+export const fetchGenreApi = async(url)=>{
+    const apiPath = `${apiURL}${url}${keyAPI}`;
+    const response = await fetch(apiPath,{
+        method:"GET",
+    })
+    const data = await response.json();
+    if(data){
+        return data;
+    }
+}

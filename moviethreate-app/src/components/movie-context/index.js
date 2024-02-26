@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
-import { fetchApiData } from "../../services";
+import { fetchApiData,fetchGenreApi } from "../../services";
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
@@ -21,7 +21,7 @@ const MovieProvider = ({ children }) => {
     };
 
     const fetchGenre = async (endpoint) => {
-        const data = await fetchApiData(endpoint);
+        const data = await fetchGenreApi(endpoint);
         if (data.genres) {
             return data.genres.map((item) => ({
                 id: item.id,
