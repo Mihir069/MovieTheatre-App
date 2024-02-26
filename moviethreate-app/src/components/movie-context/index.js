@@ -51,7 +51,7 @@ const MovieProvider = ({ children }) => {
                     setTopRates(topRatedData);
                     setMovieGenre(genreData);
                     setFetchedData(true);
-               }
+                }
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
