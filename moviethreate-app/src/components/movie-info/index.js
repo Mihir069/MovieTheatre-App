@@ -1,20 +1,44 @@
-
-import { useContext, useEffect } from "react";
+import {useEffect, useState } from "react";
 import MovieImages from "../common/movie-Image";
 import MovieCast from "../common/movie-cast";
-import { MovieContext } from "../movie-context";
 import "./style.css";
 import YouTube from "react-youtube";
 import MovieSimilerCard from "../common/movie-similer-card";
+import { useParams } from "react-router-dom";
+import { fetchDetailApi } from "../../services";
 const MovieInfo = () => {
+    const [selectedMovie,setSelectedMovie] = useState({});
+    const [movieImages,setMovieImages] = useState([]);
+    const [movieCast,setMovieCast] = useState([]);
+    const [review,setReview] = useState([]);
+    const [video,setVideo] = useState([]);
+    const [similerMovies,setSimilerMovies] = useState([]);
+    const {movieId} = useParams();
 
-    const {movieId,fetchMovieDetails,selectedMovie,movieImages,movieCast,review,video,similerMovies}=useContext(MovieContext);
-    console.log(movieId,"dehd")
+    const fetchDetails = async (endpoint) =>{
+        const data = await fetchDetailApi(endpoint);
+        return data;
+    }
+
     useEffect(()=>{
-        if(movieId){
-            fetchMovieDetails();
+        const fetchMovieDetails =  async () =>{
+            const [movieData,imagesData,creditsData,similarData,reviewData,videoData]= await Promise.all([
+                fetchDetails(`movie/${movieId}`),   
+                fetchDetails(`movie/${movieId}/images`),
+                fetchDetails(`movie/${movieId}/credits`),
+                fetchDetails(`movie/${movieId}/similar`),
+                fetchDetails(`movie/${movieId}/reviews`),
+                fetchDetails(`movie/${movieId}/videos`)
+            ]);
+            setSelectedMovie(movieData);
+            setMovieImages(imagesData);
+            setMovieCast(creditsData);
+            setSimilerMovies(similarData);
+            setReview(reviewData)
         }
-    },[movieId,fetchMovieDetails]);
+        fetchMovieDetails()
+    },[movieId])
+
 
     const reviews = review.map((review,movie) => (
         <div key={review.id} className="review">

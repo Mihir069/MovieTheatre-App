@@ -23,7 +23,7 @@ export const fetchApiData =  async (url) =>{
     });
     const data = await response.json();
 
-    if (data.results.length > 0) {
+    if (data.results) {
         const results = data.results.map((item) => ({
             id: item.id,
             title: item.original_title || item.original_name,
