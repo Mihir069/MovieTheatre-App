@@ -39,15 +39,13 @@ export const fetchApiData =  async (url) =>{
     return [];
 }
 
-export const fetchDetailApi = (url) =>{
+export const fetchDetailApi = async (url) =>{
     const apiPath = `${apiURL}${url}${keyAPI}`;
-    console.log("movieId",apiPath)
-    fetch(apiPath,{
+    const response = await fetch(apiPath,{
         method:'GET',
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data)
-        return data
-    })
+    });
+    const data = await response.json()
+    if(data){
+        return data;
+    }
 }

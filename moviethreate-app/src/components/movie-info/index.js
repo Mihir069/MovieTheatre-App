@@ -22,7 +22,7 @@ const MovieInfo = () => {
 
     useEffect(()=>{
         const fetchMovieDetails =  async () =>{
-            const [movieData,imagesData,creditsData,similarData,reviewData,videoData]= await Promise.all([
+            const [movieData,imagesData,creditsData,similarData,reviewsData,videosData]= await Promise.all([
                 fetchDetails(`movie/${movieId}`),   
                 fetchDetails(`movie/${movieId}/images`),
                 fetchDetails(`movie/${movieId}/credits`),
@@ -30,12 +30,54 @@ const MovieInfo = () => {
                 fetchDetails(`movie/${movieId}/reviews`),
                 fetchDetails(`movie/${movieId}/videos`)
             ]);
-            setSelectedMovie(movieData);
-            setMovieImages(imagesData);
-            setMovieCast(creditsData);
-            setSimilerMovies(similarData);
-            setReview(reviewData)
+            const movie = {
+                title: movieData.title,
+                poster: movieData.backdrop_path,
+                release_date: movieData.release_date,
+                ratings: movieData.vote_average,
+                genres: movieData.genres ? movieData.genres.map(genre => genre.name).join(", ") : "",
+                overview: movieData.overview,
+                runtime: movieData.runtime,
+                vote_count: movieData.vote_count
+            };
+            setSelectedMovie(movie);
+
+            const movieImages = imagesData.backdrops.map(backdrop => ({
+                file_path: backdrop.file_path,
+                aspect_ratio: backdrop.aspect_ratio,
+                height: backdrop.height,
+                width: backdrop.width,
+            }));
+            setMovieImages(movieImages || []);
+
+            const movieCast =creditsData.cast.map(castMember => ({
+                profile: castMember.profile_path,
+                name: castMember.name,
+                gender: castMember.gender === 2 ? 'Male' : castMember.gender === 1 ? 'Female' : 'Other',
+                character: castMember.character
+            }));
+            setMovieCast(movieCast || []);
+
+            const similer =  similarData.results.map(item => ({
+                id: item.id,
+                title: item.original_title,
+                poster: item.backdrop_path,
+            }));
+            setSimilerMovies(similer || []);
+
+            const reviews =  reviewsData.results.map(review => ({
+                id: review.id,
+                author: review.author,
+                content: review.content,
+                rating: review.author_details.rating,
+                created_at: review.created_at
+            }));
+            setReview(reviews || []);
+
+            const trailer = videosData.results.find(clip => clip.type === "Trailer");
+            if (trailer) setVideo(trailer.key);
         }
+
         fetchMovieDetails()
     },[movieId])
 
