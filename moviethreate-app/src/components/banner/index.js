@@ -28,16 +28,16 @@ const MovieBanner = () =>{
     const goToSlide = (index)=>{
         setCurrentSlide(index)
     }
-    // const nextSlide = () =>{
-    //     setCurrentSlide((prevSlide)=>
-    //     prevSlide === banners.length -1 ?0 : prevSlide+1        
-    //     )
-    // }
-    // const prevSlide = () =>{
-    //     setCurrentSlide((prevSlide)=>
-    //         prevSlide === 0 ? banners.length-1 : prevSlide - 1
-    //     )
-    // }
+    const nextSlide = () =>{
+        setCurrentSlide((prevSlide)=>
+        prevSlide === banners.length -1 ?0 : prevSlide+1        
+        )
+    }
+    const prevSlide = () =>{
+        setCurrentSlide((prevSlide)=>
+            prevSlide === 0 ? banners.length-1 : prevSlide - 1
+        )
+    }
     return(
             <div className="banner">
                 <div className="text-container p-2 m-2">
@@ -59,10 +59,10 @@ const MovieBanner = () =>{
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
                     </div>
                 </div>
-                    {/* <div className="slider-arrow justify-content-between col-auto">
+                    <div className="slider-arrow justify-content-between col-auto">
                         <button className="p-2" onClick={prevSlide}>&#10094;</button>
                         <button className="p-2" onClick={nextSlide}>&#10095;</button>
-                    </div> */}
+                    </div>
             </div>
     )
 }

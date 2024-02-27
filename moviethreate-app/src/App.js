@@ -9,8 +9,9 @@ const App = () =>{
     return(
             <BrowserRouter>
                 <MovieProvider>
-                    <MovieHeader/>
+                    
                         <div className="container">
+                            <MovieHeader/>
                             <Routes>
                                 <Route path="/" element={<Home/>}/>
                                 <Route path="/movie/:movieId" element={<MovieInfo />} />

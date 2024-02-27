@@ -1,20 +1,5 @@
 import { apiURL } from '../config';
 import { keyAPI } from '../config';
-// export const getSearchResult = (url, query) => {
-//     const apiPath = `${apiURL}${url}&query=${query}`;
-//     console.log("search",apiPath)
-//     fetch(apiPath, {
-//         method: 'GET'
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//        return(data.results);
-//     })
-//     .catch(error => {
-//         console.error('Error fetching data:', error);
-//     });
-// };
-
 export const getSearchResult = async (url,query)=>{
     const apiPath = `${apiURL}${url}&query=${query}`;
     console.log("search",apiPath)

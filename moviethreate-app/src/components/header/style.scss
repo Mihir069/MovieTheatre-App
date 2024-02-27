@@ -2,6 +2,9 @@
     height: 95px;
     background-color: #ffffff;
     border-radius: 20px;
+    position: fixed;
+    top: -24px;
+    right: 98px;
 
     &.inline-end {
         float: inline-end;
