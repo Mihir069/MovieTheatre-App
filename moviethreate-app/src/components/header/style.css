@@ -19,7 +19,7 @@
 }
 .search-bar{
     position: relative;
-    top: 0;
+    top: 10px;
 }
 .a {
     text-decoration: none;
@@ -101,3 +101,4 @@
         width: 100%;
     }
 }
+

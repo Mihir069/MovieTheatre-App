@@ -10,7 +10,7 @@ const App = () =>{
             <BrowserRouter>
                 <MovieProvider>
                     
-                        <div className="container">
+                        <div className="container mt-5 pt-5">
                             <MovieHeader/>
                             <Routes>
                                 <Route path="/" element={<Home/>}/>

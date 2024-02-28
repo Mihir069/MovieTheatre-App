@@ -5,7 +5,7 @@
     display: none;
 }
 .slider{
-    box-shadow: 0 2px 4px #c1bfbfe1;
+    box-shadow: 0 2px 4px #afa8a8e1;
     border-radius: 30px;
 }
 .text-container h3{
@@ -20,16 +20,11 @@
     border-top-right-radius: 30px;
 }
 .slider-arrow{
-    position: absolute;
-    top: 60%; 
-    transform: translate((-50%,-50%));
-    width: 1296px;
-    display: flex;
+    float: right;
 }
 .slider-arrow button{
-    background-color: #726b6b;
     border: none;
-    color: #ffffff;
+    color: #000000;
     font-size: 24px;
     cursor: pointer;
     transition:background-color 0.3s ease;
@@ -47,5 +42,8 @@
     }
 }
 .slider-arrow button:hover{
-    background-color: #3b3939;
+    background-color: #bcbcbc;
+}
+.left{
+    display: left;
 }
