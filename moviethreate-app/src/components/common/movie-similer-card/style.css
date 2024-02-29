@@ -1,9 +1,9 @@
-.movie-poster{
+.similar-movie-poster{
     border-radius: 20px;
     box-shadow: 0 2px 4px #c1bfbfe1;
     text-align: center;
 }
-.movie-poster img{
+.similar-movie-poster img{
     width: 305px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;

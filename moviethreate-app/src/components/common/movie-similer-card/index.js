@@ -6,7 +6,7 @@ const MovieSimilerCard= ({similerMovies }) => {
         {
             similerMovies.map((similerMovies)=>(
                 <>
-                <div className="movie-poster mx-2">
+                <div className="similar-movie-poster mx-2">
                     <Link to={`/movie/${similerMovies.id}`}>
                         <img src={`https://image.tmdb.org/t/p/w500${similerMovies.poster}`} alt={similerMovies.name} />
                     </Link>
