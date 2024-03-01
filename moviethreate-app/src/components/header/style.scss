@@ -5,7 +5,7 @@
     position: fixed;
     top: -24px;
     right: 98px;
-
+    z-index: 1;
     &.inline-end {
         float: inline-end;
     }
