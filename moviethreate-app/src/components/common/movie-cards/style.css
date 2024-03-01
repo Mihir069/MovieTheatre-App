@@ -27,4 +27,8 @@
 .movie-genre{
     font-size: 15px;
 }
+.movie-ratings{
+    position: relative;
+    top: -28px;
+}
 

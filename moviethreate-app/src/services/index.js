@@ -29,7 +29,7 @@ export const fetchApiData =  async (url) =>{
         const results = data.results.map((item) => ({
             id: item.id,
             title: item.original_title || item.original_name,
-            poster: item.backdrop_path,
+            poster: item.poster_path,
             release_date: item.release_date,
             ratings: item.vote_average,
             genre: item.genre_ids,
