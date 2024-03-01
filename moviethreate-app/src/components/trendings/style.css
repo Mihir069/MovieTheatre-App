@@ -1,0 +1,22 @@
+
+.slider-card-arrow {
+    position: absolute;
+    top: 170%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1000;
+    color: #ffffff;
+    background-color: #000000;
+    transition: 1s ease;
+}
+.slider-card-arrow:hover{
+    background-color: #0000003e;
+}
+.left-arrow {
+    left: 122px;
+}
+
+.right-arrow {
+    right: 119px;
+}
+

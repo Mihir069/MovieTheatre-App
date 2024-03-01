@@ -1,19 +1,43 @@
+//js
 
 import MovieCard from "../common/movie-cards";
 import { MovieContext } from "../movie-context";
-import { useContext } from "react";
-const TrendingMovies = () =>{
-    const {trendingMovies,movieGenre} = useContext(MovieContext);
-    if(!trendingMovies){
-        return(
+import "./style.css";
+import { useContext, useState } from "react";
+
+const TrendingMovies = () => {
+    const { trendingMovies, movieGenre } = useContext(MovieContext);
+    const [sliderPosition, setSliderPosition] = useState(0);
+
+    const handlePrevClick = () => {
+        if (sliderPosition > 0) {
+            setSliderPosition(sliderPosition - 1);
+        }
+    }
+
+    const handleNextClick = () => {
+        if (sliderPosition < (trendingMovies.length - 5)) {
+            setSliderPosition(sliderPosition + 1);
+        }
+    }
+
+    if (!trendingMovies) {
+        return (
             <div>Loading....</div>
         )
     }
-    const movieCard = trendingMovies.map((movie,index)=>(
-        <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
+
+    const visibleMovies = trendingMovies.slice(sliderPosition, sliderPosition + 5);
+
+    const movieCard = visibleMovies.map((movie, index) => (
+        <MovieCard key={index} movie={movie} movieGenre={movieGenre} />
     ));
-    return(
+
+    return (
         <section className="my-5">
+            <div className="container"></div>
+            <div className="slider-card-arrow left-arrow p-3" onClick={handlePrevClick}>&lt;</div>
+            <div className="slider-card-arrow right-arrow p-3" onClick={handleNextClick}>&gt;</div>
             <div className="genre-heading">
                 Trendings
             </div>
@@ -25,4 +49,5 @@ const TrendingMovies = () =>{
         </section>
     )
 }
+
 export default TrendingMovies;
