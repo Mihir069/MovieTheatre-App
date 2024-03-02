@@ -36,8 +36,14 @@ const TrendingMovies = () => {
     return (
         <section className="my-5">
             <div className="container"></div>
-            <div className="slider-card-arrow left-arrow p-3" onClick={handlePrevClick}>&lt;</div>
-            <div className="slider-card-arrow right-arrow p-3" onClick={handleNextClick}>&gt;</div>
+            <div className="slider-card-container justify-content-between">
+                {sliderPosition<(trendingMovies.length)&&(
+                    <div className="slider-card-arrow p-3 " onClick={handlePrevClick}>&lt;</div>
+                )}   
+                {sliderPosition<(trendingMovies.length-5)&&(
+                    <div className="slider-card-arrow p-3" onClick={handleNextClick}>&gt;</div>
+                )}
+            </div>
             <div className="genre-heading">
                 Trendings
             </div>

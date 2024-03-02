@@ -9,6 +9,7 @@
 }
 .movie-card{
     gap:20px;
+    transition: 0.3 ease;
 }
 .movie{
     border-radius: 20px;
