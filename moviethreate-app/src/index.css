@@ -6,3 +6,9 @@
 .body{
     font-family: 'Poppins', sans-serif;
 }
+.slider-card-container{
+    width: 100%;
+    position: relative;
+    display: flex;
+    top: 290px;
+}

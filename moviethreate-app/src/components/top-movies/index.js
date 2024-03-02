@@ -1,19 +1,25 @@
-
 import MovieCard from "../common/movie-cards";
+import SliderArrow from "../common/slider-arrow";
 import { MovieContext } from "../movie-context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import "../../index.css";
 const TopRatedMovies = () =>{
     const {topRates,movieGenre} = useContext(MovieContext);
+    const [sliderPosition,setSliderPosition] = useState(0)
     if(!topRates){
         return(
             <div>Loading....</div>
         )
     }
-    const movieCard =topRates.map((movie,index)=>(
+    const visibleMovie = topRates.slice(sliderPosition,sliderPosition+5)
+    const movieCard =visibleMovie.map((movie,index)=>(
         <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
     ))
     return(
         <section className="my-5">
+            <div className="slider-card-container justify-content-between">
+            <SliderArrow sliderMovie={topRates} sliderPosition={sliderPosition}setSliderPosition={setSliderPosition}/>
+            </div>
             <div className="genre-heading">
                 Top Rated Movies
             </div>
