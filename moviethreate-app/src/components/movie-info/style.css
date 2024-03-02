@@ -1,23 +1,42 @@
-.movie-details-card{
-    box-shadow: 0 2px 4px #c1bfbfe1;
+.movie-details-container{
+    background: #00000021;
+
 }
-.movie-details {
-    background-color: #000000e1;
-    color: #858282;
+.image-bg{
+    width: 100%;
+    height: 75%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.7;
+    z-index:-1;
+}
+.movie-detail-poster img{
+    height: 363px;
+    width: 293px;
 }
 .movie-title{
     font-size: 45px;
     font-weight: 800;
 }
+.movie-release{
+    color: #ffffff;
+    font-weight: 600;
+}
+.ratings{
+    position: relative;
+    top: 0;
+}
 .movie-star img{
     width: 45px;
+}
 
-}
-.rating{
-    font-size: 20px;
-}
 .movie-overview{
-    box-shadow: 0 2px 4px #c1bfbfe1;
+    color: #ffffff;
+    font-weight: 400;
 }
 .review-container {
     margin-top: 20px;

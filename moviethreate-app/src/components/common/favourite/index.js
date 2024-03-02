@@ -1,11 +1,11 @@
 import "./style.css";
-const WatchList = () =>{
+const Favourite = () =>{
     return(
         <div className="btn-container justify-content-between align-items-centre ">
             <div className="btn p-2 ">
-                <img src="../svg/bookmark-solid.svg" alt="bookmark" />
+                <img src="../svg/star-solid.svg" alt="favourite" />
             </div>
         </div>
     )
 }
-export default WatchList;
+export default Favourite;

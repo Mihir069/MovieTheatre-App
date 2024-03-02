@@ -1,11 +1,14 @@
 import {useEffect, useState } from "react";
-import MovieImages from "../common/movie-Image";
-import MovieCast from "../common/movie-cast";
-import "./style.css";
-import YouTube from "react-youtube";
-import MovieSimilerCard from "../common/movie-similer-card";
 import { useParams } from "react-router-dom";
 import { fetchDetailApi } from "../../services";
+import MovieImages from "../common/movie-Image";
+import MovieCast from "../common/movie-cast";
+import ProgressBar from "../common/progress-bar";
+import WatchList from "../common/watch-list";
+import Favourite from "../common/favourite";
+import YouTube from "react-youtube";
+import MovieSimilerCard from "../common/movie-similer-card";
+import "./style.css";
 const MovieInfo = () => {
     const [selectedMovie,setSelectedMovie] = useState({});
     const [movieImages,setMovieImages] = useState([]);
@@ -65,6 +68,7 @@ const MovieInfo = () => {
                         id: item.id,
                         title: item.original_title,
                         poster: item.backdrop_path,
+                        ratings:item.vote_average,
                     }));
                     setSimilerMovies(similer || []);
         
@@ -102,54 +106,71 @@ const MovieInfo = () => {
             {selectedMovie && (
                 <div className="movie-details-container">
                     <div className="movie-details-card row">
-                        <div className="movie-details p-4 col-6 my-3">
-                            <div className="movie-title">
-                                {selectedMovie.title}
+                        <div className="image-bg-container">
+                            <div className="image-bg" style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${selectedMovie.poster})`}}></div>
+                        </div>
+                        
+                        <div className="movie-details p-4 col-3 my-3" >
+                            <div className="movie-header">
+                                <div className="movie-detail-poster">
+                                    <img src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster}`} alt={selectedMovie.name} />
+                                </div>
                             </div>
-                            <div className="movie-release d-inline">
+                        </div>
+                        <div className="movie-details p-4 col-6 my-3">
+                            <div className="movie-title d-inline">
+                                    {selectedMovie.title}
+                            </div>
+                            <div className="movie-release ">
                                 {selectedMovie.release_date}|
                                 {selectedMovie.genres}|
                                 {selectedMovie.runtime}m
                             </div>
-                        </div>
-                        <div className="movie-details p-4 col-6 my-3">
-                            <div className="movie-star  d-inline-flex">
-                                <img src="../svg/star-solid.svg" alt="star" />
-                                <div className="rating">{selectedMovie.ratings}/10 <br/>{selectedMovie.vote_count} </div>
-                            </div>
-                        </div>
-                        <div className="details p-4 row">
-                            <div className="movie-main-img col-auto">
-                                <MovieImages movieImages={movieImages}/>
+                            <div className="ratings m-2 d-inline-flex">
+                                <div className="progress p-2">
+                                    <ProgressBar stars={selectedMovie.ratings}/>
+                                </div>
+                                <div className="watch-list p-2">
+                                    <WatchList/>
+                                </div>
+                                <div className="favourite p-2">
+                                    <Favourite/>
+                                </div>
                             </div>
                             <div className="movie-overview my-3">
                                 <p><strong>Overview :</strong>{selectedMovie.overview}</p>
                             </div>
-                            <YouTube videoId={video}/>
                         </div>
                         <div className="movie-cast-container">
-                            <h3>Cast</h3>
+                            <h4>Cast</h4>
                             <MovieCast movieCast={movieCast}/>
+                        </div>
+                        <div className="my-5 py-5">
+                            <h4>Movie Reviews</h4>
+                            <div className="review-container">
+                                {reviews}
+                            </div>
+                        </div>
+                        <div className="details p-4 d-inline-flex">
+                            <div className="movie-main-img col-6 ">
+                                <YouTube videoId={video}/>
+                            </div>
+                            <div className="movie-main-img col-6 p-1">
+                                <MovieImages movieImages={movieImages}/>
+                            </div>
+                        </div>
+                        <div className="more-movies">
+                            <h4>More Like This</h4>
+                            <div className="similer-movies-container">
+                                <div className="similer-movie d-inline-flex my-4">
+                                    <MovieSimilerCard similerMovies={similerMovies}/>
+                                </div>
+                            </div>
                         </div>
                         
                     </div>
                 </div>
             )}
-            <div className="my-5 py-5">
-                <h2>Movie Reviews</h2>
-                <div className="review-container">
-                    {reviews}
-                </div>
-            </div>
-            <div className="more-movies">
-                <h2>More Like This</h2>
-                <div className="similer-movies-container">
-                    <div className="similer-movie d-inline-flex my-4">
-                        <MovieSimilerCard similerMovies={similerMovies}/>
-                    </div>
-                </div>
-            </div>
-
             {!selectedMovie && <p>Loading...</p>}
             
         </>

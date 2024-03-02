@@ -9,5 +9,6 @@
 }
 .backdrop-images img{
     flex: 0 0 auto;
+    height: 350px;
     
 }
