@@ -104,7 +104,7 @@ const MovieInfo = () => {
     return (
         <>
             {selectedMovie && (
-                <div className="movie-details-container">
+                <div className="movie-details-container p-4">
                     <div className="movie-details-card row">
                         <div className="image-bg-container">
                             <div className="image-bg" style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${selectedMovie.poster})`}}></div>
@@ -155,7 +155,7 @@ const MovieInfo = () => {
                             <div className="movie-main-img col-6 ">
                                 <YouTube videoId={video}/>
                             </div>
-                            <div className="movie-main-img col-6 p-1">
+                            <div className="movie-main-img col-6 mx-4 my-2">
                                 <MovieImages movieImages={movieImages}/>
                             </div>
                         </div>
