@@ -3,7 +3,6 @@ import { MovieContext } from "../movie-context";
 import "./style.css"
 const GenreList= () =>{
     const {movieGenre} = useContext(MovieContext);
-    console.log("Movies",movieGenre)
     if(!movieGenre){
         return(
             <div>Loading.....</div>
