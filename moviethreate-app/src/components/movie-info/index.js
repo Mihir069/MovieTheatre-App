@@ -1,6 +1,8 @@
 import {useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchDetailApi } from "../../services";
+import { useDispatch,useSelector } from "react-redux";
+import { setSelectedMovie,setMovieImages,setMovieCast,setReview,setVideo,setSimilerMovies } from "../../reducers/movieInfoReducer";
 import MovieImages from "../common/movie-Image";
 import MovieCast from "../common/movie-cast";
 import ProgressBar from "../common/progress-bar";
@@ -8,19 +10,30 @@ import WatchList from "../common/watch-list";
 import Favourite from "../common/favourite";
 import YouTube from "react-youtube";
 import MovieSimilerCard from "../common/movie-similer-card";
+import Loading from "../common/loader";
 import "./style.css";
+
 const MovieInfo = () => {
-    const [selectedMovie,setSelectedMovie] = useState({});
-    const [movieImages,setMovieImages] = useState([]);
-    const [movieCast,setMovieCast] = useState([]);
-    const [review,setReview] = useState([]);
-    const [video,setVideo] = useState([]);
-    const [similerMovies,setSimilerMovies] = useState([]);
-    const [fetchedData,setFetchedData] = useState(false)
+    // const [selectedMovie,setSelectedMovie] = useState({});
+    // const [movieImages,setMovieImages] = useState([]);
+    // const [movieCast,setMovieCast] = useState([]);
+    // const [review,setReview] = useState([]);
+    // const [video,setVideo] = useState([]);
+    // const [similerMovies,setSimilerMovies] = useState([]);
+
+    const [fetchedData,setFetchedData] = useState(false);
+    const selectedMovie = useSelector((state)=>state.movieInfo.selectedMovie);
+    const movieImages = useSelector((state)=>state.movieInfo.movieImages);
+    const movieCast = useSelector((state)=>state.movieInfo.movieCast);
+    const review = useSelector((state)=>state.movieInfo.review);
+    const video = useSelector((state)=>state.movieInfo.video);
+    const similerMovies = useSelector((state)=>state.movieInfo.similerMovies);
+    const dispatch = useDispatch();
     const {movieId} = useParams();
 
     const fetchDetails = async (endpoint) =>{
         const data = await fetchDetailApi(endpoint);
+        console.log(data)
         return data;
     }
 
@@ -46,15 +59,15 @@ const MovieInfo = () => {
                         runtime: movieData.runtime,
                         vote_count: movieData.vote_count
                     };
-                    setSelectedMovie(movie);
-        
+                    dispatch(setSelectedMovie(movie));
+
                     const movieImages = imagesData.backdrops.map(backdrop => ({
                         file_path: backdrop.file_path,
                         aspect_ratio: backdrop.aspect_ratio,
                         height: backdrop.height,
                         width: backdrop.width,
                     }));
-                    setMovieImages(movieImages || []);
+                    dispatch(setMovieImages(movieImages || []));
         
                     const movieCast =creditsData.cast.map(castMember => ({
                         profile: castMember.profile_path,
@@ -62,7 +75,7 @@ const MovieInfo = () => {
                         gender: castMember.gender === 2 ? 'Male' : castMember.gender === 1 ? 'Female' : 'Other',
                         character: castMember.character
                     }));
-                    setMovieCast(movieCast || []);
+                    dispatch(setMovieCast(movieCast || []));
         
                     const similer =  similarData.results.map(item => ({
                         id: item.id,
@@ -70,7 +83,7 @@ const MovieInfo = () => {
                         poster: item.backdrop_path,
                         ratings:item.vote_average,
                     }));
-                    setSimilerMovies(similer || []);
+                    dispatch(setSimilerMovies(similer || []));
         
                     const reviews =  reviewsData.results.map(review => ({
                         id: review.id,
@@ -79,9 +92,10 @@ const MovieInfo = () => {
                         rating: review.author_details.rating,
                         created_at: review.created_at
                     }));
-                    setReview(reviews || []);
+                    dispatch(setReview(reviews || []));
+
                     const trailer = videosData.results.find(clip => clip.type === "Trailer");
-                    if (trailer) setVideo(trailer.key);
+                    if (trailer) dispatch(setVideo(trailer.key));
                     setFetchedData(true);
                 }
             }catch(error){
@@ -90,7 +104,7 @@ const MovieInfo = () => {
         }
 
         fetchMovieDetails()
-    },[movieId,fetchedData]);
+    },[movieId,fetchedData,dispatch]);
 
 
     const reviews = review.map((review,movie) => (
@@ -171,7 +185,7 @@ const MovieInfo = () => {
                     </div>
                 </div>
             )}
-            {!selectedMovie && <p>Loading...</p>}
+            {!selectedMovie && <p><Loading/></p>}
             
         </>
     );

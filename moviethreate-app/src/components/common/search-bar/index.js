@@ -57,8 +57,8 @@ const SearchBar = () => {
                 </span>
             </div>
             <div className={`search-results ${search || (movieSearched && movieSearched.length > 0) ? 'open' : ''}`}>
-            {movieSearch}
-</div>
+                {movieSearch}
+            </div>
 
         </>
     );

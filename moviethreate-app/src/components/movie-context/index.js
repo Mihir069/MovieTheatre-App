@@ -13,12 +13,12 @@ const MovieProvider = ({ children }) => {
     // const [trendingMovies, setTrendingMovies] = useState([]);
     const [fetchedData, setFetchedData] = useState(false);
     const dispatch = useDispatch();
-    const movies = useSelector((state)=>state.movies);
-    const playingMovies = useSelector((state)=>state.playingMovies);
-    const popularMovies = useSelector((state)=>state.popularMovies);
-    const movieGenre = useSelector((state)=>state.movieGenre);
-    const topRatedMovies = useSelector((state)=>state.topRatedMovies);
-    const trendingMovies = useSelector((state)=>state.trendingMovies)
+    const movies = useSelector((state)=>state.movie.movies);
+    const playingMovies = useSelector((state)=>state.movie.playingMovies);
+    const popularMovies = useSelector((state)=>state.movie.popularMovies);
+    const movieGenre = useSelector((state)=>state.movie.movieGenre);
+    const topRatedMovies = useSelector((state)=>state.movie.topRatedMovies);
+    const trendingMovies = useSelector((state)=>state.movie.trendingMovies)
 
 
    const fetchMovies =  async (endpoint) => {

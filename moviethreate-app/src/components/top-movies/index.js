@@ -2,11 +2,15 @@ import MovieCard from "../common/movie-cards";
 import SliderArrow from "../common/slider-arrow";
 import { MovieContext } from "../movie-context";
 import { useContext, useState } from "react";
+import Loading from "../common/loader";
 import "../../index.css";
+
 const TopRatedMovies = () =>{
     const {topRatedMovies,movieGenre} = useContext(MovieContext);
     const [sliderPosition,setSliderPosition] = useState(0)
-
+    if(!topRatedMovies){
+        return <div><Loading/></div>
+    }
     const visibleMovie = topRatedMovies.slice(sliderPosition,sliderPosition+5)
     const movieCard =visibleMovie.map((movie,index)=>(
         <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>

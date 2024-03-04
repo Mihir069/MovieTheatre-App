@@ -2,13 +2,15 @@ import MovieCard from "../common/movie-cards";
 import SliderArrow from "../common/slider-arrow";
 import { MovieContext } from "../movie-context";
 import { useContext, useState } from "react";
+import Loading from "../common/loader";
 import "../../index.css";
+
 const IncomignMovie= () =>{
     const {movies,movieGenre} = useContext(MovieContext)
     const [sliderPosition,setSliderPosition] = useState(0)
     if(!movies){
         return(
-            <div>Loading.....</div>
+            <div><Loading/></div>
         )
     }
     const visibleMovie = movies.slice(sliderPosition,sliderPosition+5)
