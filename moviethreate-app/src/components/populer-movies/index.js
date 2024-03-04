@@ -4,22 +4,21 @@ import SliderArrow from "../common/slider-arrow";
 import { useContext, useState } from "react";
 import "../../index.css";
 const PopulerMovies = () =>{
-    const {populerMovie,movieGenre} = useContext(MovieContext);
+    const {popularMovies,movieGenre} = useContext(MovieContext);
     const [sliderPosition,setSliderPosition] = useState(0)
-    console.log("popular ",populerMovie)
-    if(!populerMovie){
+    if(!popularMovies){
         return(
             <div>Loading....</div>
         )
     }
-    const visibleMovie = populerMovie.slice(sliderPosition,sliderPosition+5)
+    const visibleMovie = popularMovies.slice(sliderPosition,sliderPosition+5)
     const movieCard = visibleMovie.map((movie,index)=>(
         <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
     ))
     return(
         <section className="my-5">
             <div className="slider-card-container justify-content-between">
-                <SliderArrow sliderMovie={populerMovie} sliderPosition={sliderPosition}setSliderPosition={setSliderPosition}/>
+                <SliderArrow sliderMovie={popularMovies} sliderPosition={sliderPosition}setSliderPosition={setSliderPosition}/>
             </div>
             <div className="genre-heading">
                 Populer Movies

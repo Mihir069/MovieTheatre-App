@@ -1,25 +1,29 @@
+import { MovieProvider } from "./components/movie-context";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route,Routes } from "react-router-dom";
 import MovieHeader from "./components/header";
 import Home from "./page/home";
 import MovieInfo from "./components/movie-info";
-import { MovieProvider } from "./components/movie-context";
 import Footer from "./components/footer";
-import "./index.css"
-import { BrowserRouter, Route,Routes } from "react-router-dom";
+import store from "./store";
+import "./index.css";
+
 const App = () =>{
     return(
-            <BrowserRouter>
-                <MovieProvider>
-                    
-                        <div className="container mt-5 pt-5">
-                            <MovieHeader/>
-                            <Routes>
-                                <Route path="/" element={<Home/>}/>
-                                <Route path="/movie/:movieId" element={<MovieInfo />} />
-                            </Routes>
-                        </div>
+        <Provider store={store}>
+            <MovieProvider>
+                <BrowserRouter>
+                    <div className="container mt-5 pt-5">
+                        <MovieHeader/>
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/movie/:movieId" element={<MovieInfo />} />
+                        </Routes>
+                    </div>
                     <Footer/>
-                </MovieProvider>
-            </BrowserRouter>
+                </BrowserRouter>
+            </MovieProvider>
+        </Provider>
     )
 }
 export default App;
