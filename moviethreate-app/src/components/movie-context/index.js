@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { fetchApiData,fetchGenreApi } from "../../services";
 import { useDispatch,useSelector } from "react-redux";
-import { setMovies,setPlayingMovies,setPopulerMovies,setMovieGenre,setTopRates,setTrendingMovies } from "../../reducers/movieReducer";
+import { setMovies,setPopulerMovies,setMovieGenre,setTopRates,setTrendingMovies } from "../../reducers/movieReducer";
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
@@ -14,7 +14,7 @@ const MovieProvider = ({ children }) => {
     const [fetchedData, setFetchedData] = useState(false);
     const dispatch = useDispatch();
     const movies = useSelector((state)=>state.movie.movies);
-    const playingMovies = useSelector((state)=>state.movie.playingMovies);
+    //const playingMovies = useSelector((state)=>state.movie.playingMovies);
     const popularMovies = useSelector((state)=>state.movie.popularMovies);
     const movieGenre = useSelector((state)=>state.movie.movieGenre);
     const topRatedMovies = useSelector((state)=>state.movie.topRatedMovies);
@@ -40,22 +40,22 @@ const MovieProvider = ({ children }) => {
         return [];
     };
 
-    useEffect(  () => {
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 
                if (!fetchedData) {
-                    const [trendingData, upcomingData, nowPlayingData, popularData, topRatedData, genreData] = await Promise.all([
+                    const [trendingData, upcomingData,  popularData, topRatedData, genreData] = await Promise.all([
                         fetchMovies("trending/all/day"),
                        fetchMovies("movie/upcoming"),
-                       fetchMovies("movie/now_playing"),
+                    //    fetchMovies("movie/now_playing"),
                         fetchMovies("movie/popular"),
                        fetchMovies("movie/top_rated"),
                        fetchGenre("genre/movie/list")
                     ]);
                     dispatch(setMovies(upcomingData));
                     dispatch(setTrendingMovies(trendingData));
-                    dispatch(setPlayingMovies(nowPlayingData));
+                    // dispatch(setPlayingMovies(nowPlayingData));
                     dispatch(setPopulerMovies(popularData));
                     dispatch(setTopRates(topRatedData));
                     dispatch(setMovieGenre(genreData));
@@ -74,7 +74,7 @@ const MovieProvider = ({ children }) => {
         fetchData();
     }, [fetchedData,dispatch]);
     return (
-        <MovieContext.Provider value={{ movies, movieGenre, playingMovies, popularMovies, topRatedMovies, trendingMovies}}>
+        <MovieContext.Provider value={{ movies, movieGenre, popularMovies, topRatedMovies, trendingMovies}}>
             {children}
         </MovieContext.Provider>
     );

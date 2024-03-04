@@ -36,9 +36,17 @@ const MovieInfo = () => {
         console.log(data)
         return data;
     }
+    
+    // [{
+    // id:12334,   '
+
+    
+    // }]
 
     useEffect(()=>{
         const fetchMovieDetails =  async () =>{
+
+            
             try{
                 if(!fetchedData){
                     const [movieData,imagesData,creditsData,similarData,reviewsData,videosData]= await Promise.all([
