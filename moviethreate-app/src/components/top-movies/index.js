@@ -1,20 +1,69 @@
-import MovieCard from "../common/movie-cards";
+import { setMovieGenre, setTopRates } from "../../reducers/movieReducer";
+import { useDispatch, useSelector } from "react-redux";
+import {  useEffect, useState } from "react";
+import { fetchApiData } from "../../services";
 import SliderArrow from "../common/slider-arrow";
-import { MovieContext } from "../movie-context";
-import { useContext, useState } from "react";
+import MovieCard from "../common/movie-cards";
 import Loading from "../common/loader";
 import "../../index.css";
 
 const TopRatedMovies = () =>{
-    const {topRatedMovies,movieGenre} = useContext(MovieContext);
-    const [sliderPosition,setSliderPosition] = useState(0)
-    if(!topRatedMovies){
-        return <div><Loading/></div>
+
+    const [sliderPosition,setSliderPosition] = useState(0);
+    const [fetchedData,setFetchedData] = useState(false);
+    const topRatedMovies = useSelector((state)=>state.movie.topRatedMovies);
+    const movieGenre = useSelector((state)=>state.movie.movieGenre);
+    const dispatch = useDispatch();
+
+    const fetchMovies = async(endpoint)=>{
+        const data = await fetchApiData(endpoint);
+        if (data) {
+            return data;
+        }
+        return [];
+    };
+
+    const fetchGenre = async(endpoint) =>{
+        const data = await fetchApiData(endpoint);
+        if (data.genres) {
+            return data.genres.map((item) => ({
+                id: item.id,
+                genre_name: item.name,
+            }));
+        }
+        return [];
     }
-    const visibleMovie = topRatedMovies.slice(sliderPosition,sliderPosition+5)
+
+    useEffect(()=>{
+        const fetchData = async() =>{
+            try{
+                if(!fetchedData){
+                    const [topRatedData,genreData] = await Promise.all([
+                        fetchMovies("movie/top_rated"),
+                        fetchGenre("genre/movie/list")
+                    ]);
+                    dispatch(setTopRates(topRatedData));
+                    dispatch(setMovieGenre(genreData));
+                    setFetchedData(true);
+                }
+            }catch(error){
+                console.error("Error in fetching data: ",error);
+            }
+        };
+        fetchData();
+    },[fetchedData,dispatch]);
+
+
+    const visibleMovie = topRatedMovies.slice(sliderPosition,sliderPosition+5);
+    
     const movieCard =visibleMovie.map((movie,index)=>(
         <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
-    ))
+    ));
+
+    if(!topRatedMovies){
+        return <div><Loading/></div>
+    };
+
     return(
         <section className="my-5">
             <div className="slider-card-container justify-content-between">
