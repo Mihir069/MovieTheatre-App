@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { fetchApiData,fetchGenreApi } from "../../services";
 import { useDispatch,useSelector } from "react-redux";
-import { setMovies,setMovieGenre,setTrendingMovies } from "../../reducers/movieReducer";
+import { setMovies,setMovieGenre,} from "../../reducers/movieReducer";
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
@@ -13,7 +13,7 @@ const MovieProvider = ({ children }) => {
     //const popularMovies = useSelector((state)=>state.movie.popularMovies);
     const movieGenre = useSelector((state)=>state.movie.movieGenre);
     //const topRatedMovies = useSelector((state)=>state.movie.topRatedMovies);
-    const trendingMovies = useSelector((state)=>state.movie.trendingMovies)
+    //const trendingMovies = useSelector((state)=>state.movie.trendingMovies)
 
 
    const fetchMovies =  async (endpoint) => {
@@ -40,8 +40,8 @@ const MovieProvider = ({ children }) => {
             try {
                 
                if (!fetchedData) {
-                    const [trendingData, upcomingData,genreData] = await Promise.all([
-                        fetchMovies("trending/all/day"),
+                    const [upcomingData,genreData] = await Promise.all([
+                        //fetchMovies("trending/all/day"),
                        fetchMovies("movie/upcoming"),
                     //    fetchMovies("movie/now_playing"),
                         //fetchMovies("movie/popular"),
@@ -49,7 +49,7 @@ const MovieProvider = ({ children }) => {
                        fetchGenre("genre/movie/list")
                     ]);
                     dispatch(setMovies(upcomingData));
-                    dispatch(setTrendingMovies(trendingData));
+                    //dispatch(setTrendingMovies(trendingData));
                     // dispatch(setPlayingMovies(nowPlayingData));
                     //dispatch(setPopulerMovies(popularData));
                     //dispatch(setTopRates(topRatedData));
@@ -69,7 +69,7 @@ const MovieProvider = ({ children }) => {
         fetchData();
     }, [fetchedData,dispatch]);
     return (
-        <MovieContext.Provider value={{ movies, movieGenre, trendingMovies}}>
+        <MovieContext.Provider value={{ movies, movieGenre}}>
             {children}
         </MovieContext.Provider>
     );
