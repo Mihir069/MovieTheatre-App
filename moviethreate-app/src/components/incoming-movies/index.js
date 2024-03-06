@@ -1,13 +1,57 @@
 import MovieCard from "../common/movie-cards";
 import SliderArrow from "../common/slider-arrow";
-import { MovieContext } from "../movie-context";
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../common/loader";
 import "../../index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchApiData, fetchGenreApi } from "../../services";
+import { setMovieGenre, setMovies } from "../../reducers/movieReducer";
 
 const IncomignMovie= () =>{
-    const {movies,movieGenre} = useContext(MovieContext)
-    const [sliderPosition,setSliderPosition] = useState(0)
+    const [fetchedData,setFetchedData] = useState(false);
+    const movies = useSelector((state)=>state.movie.movies);
+    const movieGenre = useSelector((state)=>state.movie.movieGenre);
+    const [sliderPosition,setSliderPosition] = useState(0);
+    const dispatch = useDispatch();
+
+    const fetchMovies = async(endpoint)=>{
+        const data = await fetchApiData(endpoint);
+        if (data) {
+            return data;
+        }
+        return [];
+    };
+
+    const fetchGenre = async (endpoint) =>{
+        const data = await fetchGenreApi(endpoint);
+        if (data.genres) {
+            return data.genres.map((item) => ({
+                id: item.id,
+                genre_name: item.name,
+            }));
+        }
+        return [];
+    };
+
+    useEffect(()=>{
+        const fetchData = async() =>{
+            try{
+                if(!fetchedData){
+                    const [upcomingData,genreData] = await Promise.all([
+                        fetchMovies("movie/upcoming"),
+                        fetchGenre("genre/movie/list")
+                    ]);
+                    dispatch(setMovies(upcomingData));
+                    dispatch(setMovieGenre(genreData));
+                    setFetchedData(true);
+                }
+            }catch(error){
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
+    },[fetchedData,dispatch]);
+
     if(!movies){
         return(
             <div><Loading/></div>

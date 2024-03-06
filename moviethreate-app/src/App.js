@@ -1,4 +1,3 @@
-import { MovieProvider } from "./components/movie-context";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route,Routes } from "react-router-dom";
 import MovieHeader from "./components/header";
@@ -11,7 +10,6 @@ import "./index.css";
 const App = () =>{
     return(
         <Provider store={store}>
-            <MovieProvider>
                 <BrowserRouter>
                     <div className="container mt-5 pt-5">
                         <MovieHeader/>
@@ -22,7 +20,6 @@ const App = () =>{
                     </div>
                     <Footer/>
                 </BrowserRouter>
-            </MovieProvider>
         </Provider>
     )
 }
