@@ -2,7 +2,7 @@ import {useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchDetailApi } from "../../services";
 import { useDispatch,useSelector } from "react-redux";
-import { setSelectedMovie,setMovieImages,setMovieCast,setReview,setVideo,setSimilerMovies } from "../../reducers/movieInfoReducer";
+import { setSelectedMovie,setReview,setVideo } from "../../reducers/movieInfoReducer";
 import MovieImages from "../common/movie-Image";
 import MovieCast from "../common/movie-cast";
 import ProgressBar from "../common/progress-bar";
@@ -14,20 +14,11 @@ import Loading from "../common/loader";
 import "./style.css";
 
 const MovieInfo = () => {
-    // const [selectedMovie,setSelectedMovie] = useState({});
-    // const [movieImages,setMovieImages] = useState([]);
-    // const [movieCast,setMovieCast] = useState([]);
-    // const [review,setReview] = useState([]);
-    // const [video,setVideo] = useState([]);
-    // const [similerMovies,setSimilerMovies] = useState([]);
 
     const [fetchedData,setFetchedData] = useState(false);
     const selectedMovie = useSelector((state)=>state.movieInfo.selectedMovie);
-    const movieImages = useSelector((state)=>state.movieInfo.movieImages);
-    const movieCast = useSelector((state)=>state.movieInfo.movieCast);
     const review = useSelector((state)=>state.movieInfo.review);
     const video = useSelector((state)=>state.movieInfo.video);
-    const similerMovies = useSelector((state)=>state.movieInfo.similerMovies);
     const dispatch = useDispatch();
     const {movieId} = useParams();
 
@@ -49,11 +40,8 @@ const MovieInfo = () => {
             
             try{
                 if(!fetchedData){
-                    const [movieData,imagesData,creditsData,similarData,reviewsData,videosData]= await Promise.all([
+                    const [movieData,reviewsData,videosData]= await Promise.all([
                         fetchDetails(`movie/${movieId}`),   
-                        fetchDetails(`movie/${movieId}/images`),
-                        fetchDetails(`movie/${movieId}/credits`),
-                        fetchDetails(`movie/${movieId}/similar`),
                         fetchDetails(`movie/${movieId}/reviews`),
                         fetchDetails(`movie/${movieId}/videos`)
                     ]);
@@ -68,30 +56,6 @@ const MovieInfo = () => {
                         vote_count: movieData.vote_count
                     };
                     dispatch(setSelectedMovie(movie));
-
-                    const movieImages = imagesData.backdrops.map(backdrop => ({
-                        file_path: backdrop.file_path,
-                        aspect_ratio: backdrop.aspect_ratio,
-                        height: backdrop.height,
-                        width: backdrop.width,
-                    }));
-                    dispatch(setMovieImages(movieImages || []));
-        
-                    const movieCast =creditsData.cast.map(castMember => ({
-                        profile: castMember.profile_path,
-                        name: castMember.name,
-                        gender: castMember.gender === 2 ? 'Male' : castMember.gender === 1 ? 'Female' : 'Other',
-                        character: castMember.character
-                    }));
-                    dispatch(setMovieCast(movieCast || []));
-        
-                    const similer =  similarData.results.map(item => ({
-                        id: item.id,
-                        title: item.original_title,
-                        poster: item.backdrop_path,
-                        ratings:item.vote_average,
-                    }));
-                    dispatch(setSimilerMovies(similer || []));
         
                     const reviews =  reviewsData.results.map(review => ({
                         id: review.id,
@@ -165,7 +129,7 @@ const MovieInfo = () => {
                         </div>
                         <div className="movie-cast-container">
                             <h4>Cast</h4>
-                            <MovieCast movieCast={movieCast}/>
+                            <MovieCast />
                         </div>
                         <div className="my-5 py-5">
                             <h4>Movie Reviews</h4>
@@ -178,14 +142,14 @@ const MovieInfo = () => {
                                 <YouTube videoId={video}/>
                             </div>
                             <div className="movie-main-img col-6 mx-4 my-2">
-                                <MovieImages movieImages={movieImages}/>
+                                <MovieImages/>
                             </div>
                         </div>
                         <div className="more-movies">
                             <h4>More Like This</h4>
                             <div className="similer-movies-container">
                                 <div className="similer-movie d-inline-flex my-4">
-                                    <MovieSimilerCard similerMovies={similerMovies}/>
+                                    <MovieSimilerCard />
                                 </div>
                             </div>
                         </div>
