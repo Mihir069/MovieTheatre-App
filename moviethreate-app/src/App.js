@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route,Routes } from "react-router-dom";
 import MovieHeader from "./components/header";
 import Home from "./page/home";
-import MovieInfo from "./components/movie-info";
+import MovieInfo from "./page/movie-details";
 import Footer from "./components/footer";
 import store from "./store";
 import "./index.css";
