@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import ProgressBar from "../progress-bar";
+import ProgressBar from "../../common/progress-bar";
 import { fetchDetailApi } from "../../../services";
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";

@@ -2,31 +2,25 @@ import {useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchDetailApi } from "../../services";
 import { useDispatch,useSelector } from "react-redux";
-import { setSelectedMovie,setReview,setVideo } from "../../reducers/movieInfoReducer";
-import MovieImages from "../common/movie-Image";
-import MovieCast from "../common/movie-cast";
+import { setSelectedMovie} from "../../reducers/movieInfoReducer";
+import MovieImages from "./movie-Image";
+import MovieCast from "./movie-cast";
 import ProgressBar from "../common/progress-bar";
 import WatchList from "../common/watch-list";
 import Favourite from "../common/favourite";
-import YouTube from "react-youtube";
-import MovieSimilerCard from "../common/movie-similer-card";
+import MovieSimilerCard from "./movie-similer-card";
 import Loading from "../common/loader";
+import Review from "./movie-review";
+import Video from "./movie-video";
 import "./style.css";
 
 const MovieInfo = () => {
 
     const [fetchedData,setFetchedData] = useState(false);
     const selectedMovie = useSelector((state)=>state.movieInfo.selectedMovie);
-    const review = useSelector((state)=>state.movieInfo.review);
-    const video = useSelector((state)=>state.movieInfo.video);
     const dispatch = useDispatch();
     const {movieId} = useParams();
 
-    const fetchDetails = async (endpoint) =>{
-        const data = await fetchDetailApi(endpoint);
-        console.log(data)
-        return data;
-    }
     
     // [{
     // id:12334,   '
@@ -40,34 +34,17 @@ const MovieInfo = () => {
             
             try{
                 if(!fetchedData){
-                    const [movieData,reviewsData,videosData]= await Promise.all([
-                        fetchDetails(`movie/${movieId}`),   
-                        fetchDetails(`movie/${movieId}/reviews`),
-                        fetchDetails(`movie/${movieId}/videos`)
-                    ]);
+                    const movieData= await fetchDetailApi(`movie/${movieId}`)
                     const movie = {
                         title: movieData.title,
                         poster: movieData.backdrop_path,
                         release_date: movieData.release_date,
                         ratings: movieData.vote_average,
-                        genres: movieData.genres ? movieData.genres.map(genre => genre.name).join(", ") : "",
                         overview: movieData.overview,
                         runtime: movieData.runtime,
                         vote_count: movieData.vote_count
                     };
                     dispatch(setSelectedMovie(movie));
-        
-                    const reviews =  reviewsData.results.map(review => ({
-                        id: review.id,
-                        author: review.author,
-                        content: review.content,
-                        rating: review.author_details.rating,
-                        created_at: review.created_at
-                    }));
-                    dispatch(setReview(reviews || []));
-
-                    const trailer = videosData.results.find(clip => clip.type === "Trailer");
-                    if (trailer) dispatch(setVideo(trailer.key));
                     setFetchedData(true);
                 }
             }catch(error){
@@ -78,15 +55,6 @@ const MovieInfo = () => {
         fetchMovieDetails()
     },[movieId,fetchedData,dispatch]);
 
-
-    const reviews = review.map((review,movie) => (
-        <div key={review.id} className="review">
-            <h2>{review.author}</h2>
-            {review.rating && <p>Rating: {review.rating}</p>}
-            <p>{review.content}</p>
-            <p>Created at: {review.created_at}</p>
-        </div>
-    ))
     return (
         <>
             {selectedMovie && (
@@ -134,12 +102,12 @@ const MovieInfo = () => {
                         <div className="my-5 py-5">
                             <h4>Movie Reviews</h4>
                             <div className="review-container">
-                                {reviews}
+                                <Review/>
                             </div>
                         </div>
                         <div className="details p-4 d-inline-flex">
                             <div className="movie-main-img col-6 ">
-                                <YouTube videoId={video}/>
+                                <Video/>
                             </div>
                             <div className="movie-main-img col-6 mx-4 my-2">
                                 <MovieImages/>
