@@ -62,11 +62,11 @@ const IncomignMovie= () =>{
         <MovieCard key={index} movie={movie} movieGenre={movieGenre}/>
     ))
     return(
-        <section className="my-5">
+        <section className="my-1">
             <div className="slider-card-container justify-content-between">
                 <SliderArrow sliderMovie={movies} sliderPosition={sliderPosition}setSliderPosition={setSliderPosition}/>
             </div>
-            <div className="genre-heading">
+            <div className="genre-heading my-3">
                 New Incoming
             </div>
             <div className="movie-card-container">

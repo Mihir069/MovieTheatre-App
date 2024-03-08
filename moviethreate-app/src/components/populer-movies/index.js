@@ -64,11 +64,11 @@ const PopulerMovies = () =>{
     };
 
     return(
-        <section className="my-5">
+        <section className="my-1">
             <div className="slider-card-container justify-content-between">
                 <SliderArrow sliderMovie={popularMovies} sliderPosition={sliderPosition}setSliderPosition={setSliderPosition}/>
             </div>
-            <div className="genre-heading">
+            <div className="genre-heading my-3">
                 Populer Movies
             </div>
             <div className="movie-card-container">
