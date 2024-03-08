@@ -37,7 +37,8 @@ const MovieInfo = () => {
                     const movieData= await fetchDetailApi(`movie/${movieId}`)
                     const movie = {
                         title: movieData.title,
-                        poster: movieData.backdrop_path,
+                        backdrop:movieData.backdrop_path,
+                        poster: movieData.poster_path,
                         release_date: movieData.release_date,
                         ratings: movieData.vote_average,
                         overview: movieData.overview,
@@ -61,7 +62,7 @@ const MovieInfo = () => {
                 <div className="movie-details-container p-4">
                     <div className="movie-details-card row">
                         <div className="image-bg-container">
-                            <div className="image-bg" style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${selectedMovie.poster})`}}></div>
+                            <div className="image-bg" style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop})`}}></div>
                         </div>
                         
                         <div className="movie-details p-4 col-3 my-3" >
