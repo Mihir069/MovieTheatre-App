@@ -3,7 +3,8 @@ import { BrowserRouter, Route,Routes } from "react-router-dom";
 import MovieHeader from "./components/header";
 import Home from "./page/home";
 import MovieInfo from "./page/movie-details";
-import AccountPage from "./components/account";
+import AccountPage from "./page/accountpage";
+import LoginPage from "./components/login";
 import Footer from "./components/footer";
 import store from "./store";
 import "./index.css";
@@ -18,6 +19,7 @@ const App = () =>{
                             <Route path="/" element={<Home/>}/>
                             <Route path="/movie/:movieId" element={<MovieInfo />} />
                             <Route path="/account" element={<AccountPage/>}/>
+                            <Route path="/login" element={<LoginPage/>}/>
                         </Routes>
                     </div>
                     <Footer/>
