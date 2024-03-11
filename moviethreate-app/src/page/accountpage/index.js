@@ -1,33 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './style.css'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserApi } from '../../services';
+import { setUserData } from '../../reducers/userAccountReducer';
 
 const AccountPage = () => {
-  const [userData, setUserData] = useState(null);
+  const userData = useSelector((state)=>state.userAccount.userData);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM'
-        }
-      };
 
       try {
-        const response = await fetch('https://api.themoviedb.org/3/account/20960400?api_key=27e7bd3c69a085aeeb14e90dccf23df', options);
-        if (!response.ok) {
-          throw new Error('Failed to fetch user data');
-        }
-        const data = await response.json();
-        setUserData(data);
+        const user = await fetchUserApi(`account/20960400`);
+        console.log("------user-----",user)
+        dispatch(setUserData(user || []))
       } catch (error) {
         console.error('Error fetching user data:', error.message);
       }
     };
 
     fetchUserData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="account-page">

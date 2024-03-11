@@ -1,5 +1,6 @@
 import { apiURL } from '../config';
 import { keyAPI } from '../config';
+import { userAccountApi } from '../config';
 
 export const getSearchResult = async (url,query)=>{
     const apiPath = `${apiURL}${url}&query=${query}`;
@@ -65,4 +66,13 @@ export const fetchGenreApi = async(url)=>{
     }
 }
 
-const fetchUserApi = async()
+export const fetchUserApi = async(url) =>{
+    const apiPath = `${userAccountApi}${url}${keyAPI}`;
+    const response = await fetch(apiPath,{
+        method:"GET",
+    })
+    const data  = await response.json();
+    if(data){
+        return data;
+    }
+}
