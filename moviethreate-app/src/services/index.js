@@ -72,10 +72,46 @@ export const fetchUserApi = async(url) =>{
         headers: {
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM'
-          }
+        }
     })
     const data  = await response.json();
+    console.log("user",data)
     if(data){
         return data;
     }
+}
+
+export const fetchFavMovieApi = async(url) =>{
+    const apiPath = `${apiURL}${url}${keyAPI}`;
+    const response = await fetch(apiPath,{
+        method:'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM'
+        }
+    })
+    const data = await response.json();
+    if(data.results){
+        console.log("favorite movie",data.results)
+        return data.results;
+    }
+}
+
+export const postFavMovie = async(url) =>{
+    const apiPath = `${apiURL}${url}${keyAPI}`;
+    const response = await fetch(apiPath,{
+        method:"POST",
+        headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM",
+        }
+    })
+    const data = await response.json()
+    if(data){
+        console.log("posted",data)
+        return data;
+    }
+
 }

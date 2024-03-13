@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserApi } from '../../services';
+import { fetchFavMovieApi, fetchUserApi } from '../../services';
 import { setUserData } from '../../reducers/userAccountReducer';
+import { Link } from 'react-router-dom';
+import { setfavoriteMovies } from '../../reducers/favoriteMovieReducer';
 
 const AccountPage = () => {
   const userData = useSelector((state)=>state.userAccount.userData);
+  const favoriteMovies = useSelector((state)=>state.favoriteMovie.favoriteMovies);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUserData = async () => {
-
       try {
+
         const user = await fetchUserApi(`account/20960400`);
-        console.log("------user-----",user)
-        dispatch(setUserData(user || []))
+        dispatch(setUserData(user || []));
+
       } catch (error) {
         console.error('Error fetching user data:', error.message);
       }
@@ -22,30 +25,24 @@ const AccountPage = () => {
 
     fetchUserData();
   }, [dispatch]);
+  
+  useEffect(()=>{
+    const fetchFavMovies = async ()=>{
+      try{
+        const favoriteMovieData = await fetchFavMovieApi(`account/20960400/favorite/movies`);
+        dispatch(setfavoriteMovies(favoriteMovieData||[]));
+      }catch(error){
+        console.error('Error fetching user data:', error.message);
+      }
+    };
+    fetchFavMovies();
+  },[dispatch]);
 
   return (
-    <div className="account-page">
-      <div className="sidebar">
-        <h1>Navigation</h1>
-        <ul>
-          {/* <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-          <li><a href="#">Link 3</a></li> */}
-        </ul>
-      </div>
+    <div className="account-page d-flex">
       <div className="main-content">
-        <h1>Account Page</h1>
         {userData ? (
           <div className="user-details">
-            <h2>User Details</h2>
-            <ul>
-              <li>Username: {userData.username}</li>
-              <li>ID: {userData.id}</li>
-              <li>Language: {userData.iso_639_1}</li>
-              <li>Country: {userData.iso_3166_1}</li>
-              <li>Adult Content: {userData.include_adult ? 'Yes' : 'No'}</li>
-              <li>Name: {userData.name || 'Not provided'}</li>
-            </ul>
             <div className="avatar">
               {userData.avatar && userData.avatar.gravatar.hash && (
                 <img
@@ -60,10 +57,31 @@ const AccountPage = () => {
                 />
               )}
             </div>
+            <h2>User Details</h2>
+            <ul>
+              <li>Username: {userData.username}</li>
+              <li>ID: {userData.id}</li>
+              <li>Language: {userData.iso_639_1}</li>
+              <li>Country: {userData.iso_3166_1}</li>
+              <li>Adult Content: {userData.include_adult ? 'Yes' : 'No'}</li>
+              <li>Name: {userData.name || 'Not provided'}</li>
+            </ul>
           </div>
         ) : (
           <p>Loading user data...</p>
         )}
+        <div className="favorite-movies">
+          <h2>Favorite Movies</h2>
+          <ul>
+            <li>
+            {favoriteMovies.map((favorite)=>(
+              <div >
+                {favorite.title}
+              </div>
+            ))}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
