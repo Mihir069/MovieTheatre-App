@@ -3,11 +3,13 @@ import movieReducer from "./reducers/movieReducer";
 import movieInfoReducer from "./reducers/movieInfoReducer";
 import userAccountReducer from "./reducers/userAccountReducer";
 import favoriteMovieReducer from "./reducers/favoriteMovieReducer";
+import postMovieReducer from "./reducers/postMovieReducer";
 export default configureStore({
     reducer:{
         movie:movieReducer,
         movieInfo:movieInfoReducer,
         userAccount:userAccountReducer,
-        favoriteMovie:favoriteMovieReducer
+        favoriteMovie:favoriteMovieReducer,
+        postMovie:postMovieReducer
     }
 })

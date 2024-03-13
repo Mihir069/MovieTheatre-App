@@ -1,37 +1,27 @@
-import React, { useState } from "react";
-import "./style.css";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsFavourite } from "../../../reducers/postMovieReducer";
+import { postFavMovie } from "../../../services";
 
 const Favourite = ({ movieId }) => {
-  const [isFavourite, setIsFavourite] = useState(false);
+  const isFavourite = useSelector((state) => state.postMovie.isFavourite);
+  const dispatch = useDispatch();
 
-  const toggleFavourite = () => {
-    setIsFavourite(!isFavourite);
-    console.log("added to fave",isFavourite)
+  const toggleFavourite = async () => {
+    try {
+      dispatch(setIsFavourite(!isFavourite));
+      console.log("added to fav :", !isFavourite);
 
-
-    if (!isFavourite) {
-      const options = {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "content-type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM",
-        },
-        body: JSON.stringify({ media_type: "movie", media_id: movieId, favorite: true }),
-      };
-
-      fetch("https://api.themoviedb.org/3/account/20960400/favorite?api_key=27e7bd3c69a085aeeb14e90dccf23dfe", options)
-        .then((response) => {
-          if (response.ok) {
-            console.log("Movie marked as favourite successfully.");
-          } else {
-            console.error("Failed to mark movie as favourite.");
-          }
-        })
-        .catch((err) => console.error(err));
+      if (!isFavourite) {
+        await postFavMovie(`account/20960400/favorite`, movieId);
+      }
+    } catch (error) {
+      console.error("Error toggling favorite status:", error.message);
     }
   };
+
+  useEffect(() => {
+  }, [dispatch, isFavourite, movieId]);
 
   return (
     <div className="btn-container justify-content-between align-items-centre ">
