@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import './style.css'; 
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFavMovieApi, fetchUserApi } from '../../services';
 import { setUserData } from '../../reducers/userAccountReducer';
-import { Link } from 'react-router-dom';
 import { setfavoriteMovies } from '../../reducers/favoriteMovieReducer';
+import './style.css'; 
 
 const AccountPage = () => {
   const userData = useSelector((state)=>state.userAccount.userData);
