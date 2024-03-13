@@ -13,39 +13,40 @@ const LoginPage = () => {
 
     if (username === "MihirKsah" && password === "Mihir@2024") {
       setLoggedIn(true);
+   
     } else {
       setFormError('Invalid username or password');
     }
   };
 
   return (
-    <div className="container">
+    <div className="container mb-4 my-4">
       <div className="row justify-content-center">
-        <div className="col-md-6">
+        <div className="login col-md-6 p-5">
           {!loggedIn ? (
             <>
-              <h2>Login</h2>
+              <h3>Login</h3>
               <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="username">Username:</label>
+                <div className="form-group mb-4">
+                  <label className='d-block mb-2' for="username">Username:</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control p-2"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password:</label>
+                <div className="form-group mb-4">
+                  <label className='d-block mb-2' for="password">Password:</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control p-2"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <button type="submit">Login</button>
-                {formError && <div className="error-message">{formError}</div>}
+                <button type="submit" className='px-3 py-2'>Login</button>
+                {formError && <div className="error-message mt-2">{formError}</div>}
               </form>
             </>
           ) : (

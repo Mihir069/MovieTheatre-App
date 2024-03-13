@@ -7,7 +7,7 @@ const User = ({ isLoggedIn }) => {
       {isLoggedIn ? (
         <Link to="/account">
           <img
-            src="./svg/user-icon.png"
+            src="./svg/"
             alt="user"
             height="20px"
             className="cursor mx-2"
