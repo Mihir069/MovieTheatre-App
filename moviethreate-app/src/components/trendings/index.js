@@ -1,5 +1,5 @@
-import { setMovieGenre, setTrendingMovies } from "../../reducers/movieReducer";
-import { fetchApiData, fetchGenreApi } from "../../services";
+import {setTrendingMovies } from "../../reducers/movieReducer";
+import { fetchApiData} from "../../services";
 import { useDispatch, useSelector } from "react-redux";
 import {  useEffect, useState} from "react";
 import SliderArrow from "../common/slider-arrow";
@@ -11,10 +11,8 @@ import "../../index.css";
 
 
 const TrendingMovies = () => {
-    const [fetchedData, setFetchedData] = useState(false);
     const [sliderPosition,setSliderPosition] = useState(0);
-    const trendingMovies = useSelector((state)=>state.movie.trendingMovies);
-    const movieGenre = useSelector((state)=>state.movie.movieGenre);
+    const trendingMovies = useSelector((state)=>state.movies.trendingMovies);
     const dispatch = useDispatch();
 
     const fetchMovies = async(endpoint)=>{
@@ -25,35 +23,17 @@ const TrendingMovies = () => {
         return [];
     };
 
-    const fetchGenre =  async(endpoint) =>{
-        const data = await fetchGenreApi(endpoint);
-        if (data.genres) {
-            return data.genres.map((item) => ({
-                id: item.id,
-                genre_name: item.name,
-            }));
-        }
-        return [];
-    };
-
     useEffect(()=>{
         const fetchData = async()=>{
             try{
-                if(!fetchedData){
-                    const [trendingData,genreData] = await Promise.all([
-                        fetchMovies("trending/all/day"),
-                        fetchGenre("genre/movie/list")
-                    ]);
-                    dispatch(setTrendingMovies(trendingData));
-                    dispatch(setMovieGenre(genreData));
-                    setFetchedData(true);
-                }
+                const trendingData = await fetchMovies("trending/all/day");
+                dispatch(setTrendingMovies(trendingData));
             }catch(error){
                 console.error("Error in fetching data: ",error);
             }
         }
         fetchData();
-    },[fetchedData,dispatch]);
+    },[dispatch]);
     
     if (!trendingMovies) {
         return (
@@ -63,7 +43,7 @@ const TrendingMovies = () => {
 
     const visibleMovie = trendingMovies.slice(sliderPosition,sliderPosition+5);
     const movieCard = visibleMovie.map((movie, index) => (
-        <MovieCard key={index} movie={movie} movieGenre={movieGenre} />
+        <MovieCard key={index} movie={movie} />
     ));
 
     return (

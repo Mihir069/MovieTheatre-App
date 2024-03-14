@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsFavourite } from "../../../reducers/postMovieReducer";
 import { postFavMovie } from "../../../services";
+import { useParams } from "react-router-dom";
 
-const Favourite = ({ movieId }) => {
+const Favourite = () => {
   const isFavourite = useSelector((state) => state.postMovie.isFavourite);
+  const {movieId} = useParams();
   const dispatch = useDispatch();
 
   const toggleFavourite = async () => {
@@ -21,7 +23,19 @@ const Favourite = ({ movieId }) => {
   };
 
   useEffect(() => {
-  }, [dispatch, isFavourite, movieId]);
+    const postMovieDetails = async () => {
+      if (isFavourite) {
+        try {
+          await postFavMovie(`account/20960400/favorite`, movieId);
+          console.log("Movie details posted successfully");
+        } catch (error) {
+          console.error("Error posting movie details:", error.message);
+        }
+      }
+    };
+
+    postMovieDetails(); 
+  }, [isFavourite, movieId]);
 
   return (
     <div className="btn-container justify-content-between align-items-centre ">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import ProgressBar from "../progress-bar";
 import "./style.css";
-const MovieCard = ({ movie, movieGenre }) => {
+const MovieCard = ({ movie }) => {
 
     return (
       <div className="movie ">

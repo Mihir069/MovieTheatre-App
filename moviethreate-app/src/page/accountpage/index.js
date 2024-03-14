@@ -1,5 +1,6 @@
 import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { fetchFavMovieApi, fetchUserApi } from '../../services';
 import { setUserData } from '../../reducers/userAccountReducer';
 import { setfavoriteMovies } from '../../reducers/favoriteMovieReducer';
@@ -10,10 +11,10 @@ const AccountPage = () => {
   const favoriteMovies = useSelector((state)=>state.favoriteMovie.favoriteMovies);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-
         const user = await fetchUserApi(`account/20960400`);
         dispatch(setUserData(user || []));
 
@@ -36,6 +37,10 @@ const AccountPage = () => {
     };
     fetchFavMovies();
   },[dispatch]);
+
+  if(userData.id === undefined){
+    return <Navigate to="/login" replace={true} />
+  }
 
   return (
     <div className="account-page d-flex">
@@ -72,13 +77,11 @@ const AccountPage = () => {
         <div className="favorite-movies">
           <h2>Favorite Movies</h2>
           <ul>
-            <li>
             {favoriteMovies.map((favorite)=>(
-              <div >
-                {favorite.title}
-              </div>
+              <li key={favorite.id}>
+                <div>{favorite.title}</div>
+              </li>
             ))}
-            </li>
           </ul>
         </div>
       </div>

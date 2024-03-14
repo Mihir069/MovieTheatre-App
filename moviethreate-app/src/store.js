@@ -6,7 +6,7 @@ import favoriteMovieReducer from "./reducers/favoriteMovieReducer";
 import postMovieReducer from "./reducers/postMovieReducer";
 export default configureStore({
     reducer:{
-        movie:movieReducer,
+        movies:movieReducer,
         movieInfo:movieInfoReducer,
         userAccount:userAccountReducer,
         favoriteMovie:favoriteMovieReducer,

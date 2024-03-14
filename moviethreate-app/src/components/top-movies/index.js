@@ -1,4 +1,4 @@
-import { setMovieGenre, setTopRates } from "../../reducers/movieReducer";
+import { setTopRates } from "../../reducers/movieReducer";
 import { useDispatch, useSelector } from "react-redux";
 import {  useEffect, useState } from "react";
 import { fetchApiData } from "../../services";
@@ -10,9 +10,7 @@ import "../../index.css";
 const TopRatedMovies = () =>{
 
     const [sliderPosition,setSliderPosition] = useState(0);
-    const [fetchedData,setFetchedData] = useState(false);
-    const topRatedMovies = useSelector((state)=>state.movie.topRatedMovies);
-    const movieGenre = useSelector((state)=>state.movie.movieGenre);
+    const topRatedMovies = useSelector((state)=>state.movies.topRatedMovies);
     const dispatch = useDispatch();
 
     const fetchMovies = async(endpoint)=>{
@@ -23,41 +21,24 @@ const TopRatedMovies = () =>{
         return [];
     };
 
-    const fetchGenre = async(endpoint) =>{
-        const data = await fetchApiData(endpoint);
-        if (data.genres) {
-            return data.genres.map((item) => ({
-                id: item.id,
-                genre_name: item.name,
-            }));
-        }
-        return [];
-    }
-
     useEffect(()=>{
         const fetchData = async() =>{
             try{
-                if(!fetchedData){
-                    const [topRatedData,genreData] = await Promise.all([
-                        fetchMovies("movie/top_rated"),
-                        fetchGenre("genre/movie/list")
-                    ]);
-                    dispatch(setTopRates(topRatedData));
-                    dispatch(setMovieGenre(genreData));
-                    setFetchedData(true);
-                }
+                const topRatedData = await fetchMovies("movie/top_rated");
+                dispatch(setTopRates(topRatedData));
+           
             }catch(error){
                 console.error("Error in fetching data: ",error);
             }
         };
         fetchData();
-    },[fetchedData,dispatch]);
+    },[dispatch]);
 
 
     const visibleMovie = topRatedMovies.slice(sliderPosition,sliderPosition+5);
     
     const movieCard =visibleMovie.map((movie,index)=>(
-        <MovieCard movie={movie} index={index} movieGenre={movieGenre}/>
+        <MovieCard movie={movie} index={index}/>
     ));
 
     if(!topRatedMovies){

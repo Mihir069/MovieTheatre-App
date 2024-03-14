@@ -97,8 +97,9 @@ export const fetchFavMovieApi = async(url) =>{
     }
 }
 
-export const postFavMovie = async(url) =>{
+export const postFavMovie = async(url,movieId) =>{
     const apiPath = `${apiURL}${url}${keyAPI}`;
+    console.log("post api :",apiPath)
     const response = await fetch(apiPath,{
         method:"POST",
         headers: {
@@ -106,7 +107,8 @@ export const postFavMovie = async(url) =>{
             "content-type": "application/json",
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM",
-        }
+        },
+        body:JSON.stringify({movieId})
     })
     const data = await response.json()
     if(data){
