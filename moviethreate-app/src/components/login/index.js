@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import AccountPage from '../../page/accountpage';
 import "./style.css"
 
@@ -49,7 +50,7 @@ const LoginPage = () => {
             </form>
           </div>
         ) : (
-          <AccountPage />
+          <Navigate to="/account"/>
         )}
       </div>
     </div>
