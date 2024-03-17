@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import "./style.css"
+import { useDispatch } from 'react-redux';
+import { fetchUserApi } from '../../services';
+import { setUserData } from '../../reducers/userAccountReducer';
+import "./style.css";
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [formError, setFormError] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (username === "MihirKsah" && password === "Mihir@2024") {
-      setLoggedIn(true);
-   
+      try{
+        const user = await fetchUserApi(`account/20960400`);
+        dispatch(setUserData(user||[]));
+        setLoggedIn(true);
+      }catch(error){
+        console.error('Error in fetching user data: ',error);
+        setFormError(`Error in fetching user Data`)
+      }
     } else {
       setFormError('Invalid username or password');
     }

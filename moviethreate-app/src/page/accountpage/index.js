@@ -18,6 +18,9 @@ const AccountPage = () => {
         const user = await fetchUserApi(`account/20960400`);
         dispatch(setUserData(user || []));
 
+        const favoriteMovieData = await fetchFavMovieApi(`account/20960400/favorite/movies`);
+        dispatch(setfavoriteMovies(favoriteMovieData||[]));
+
       } catch (error) {
         console.error('Error fetching user data:', error.message);
       }
@@ -25,18 +28,6 @@ const AccountPage = () => {
 
     fetchUserData();
   }, [dispatch]);
-  
-  useEffect(()=>{
-    const fetchFavMovies = async ()=>{
-      try{
-        const favoriteMovieData = await fetchFavMovieApi(`account/20960400/favorite/movies`);
-        dispatch(setfavoriteMovies(favoriteMovieData||[]));
-      }catch(error){
-        console.error('Error fetching user data:', error.message);
-      }
-    };
-    fetchFavMovies();
-  },[dispatch]);
 
   if(userData.id === undefined){
     return <Navigate to="/login" replace={true} />
