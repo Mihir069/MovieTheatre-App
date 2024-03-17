@@ -108,7 +108,7 @@ export const postFavMovie = async(url,movieId) =>{
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM",
         },
-        body: JSON.stringify({ movieId: movieId }),
+        body: JSON.stringify({media_type: 'movie', media_id: `${movieId}`, favorite: true}),
     })
     const data = await response.json()
     if(data){
