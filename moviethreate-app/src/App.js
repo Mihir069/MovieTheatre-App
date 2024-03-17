@@ -4,7 +4,7 @@ import MovieHeader from "./components/header";
 import Home from "./page/home";
 import MovieInfo from "./page/movie-details";
 import AccountPage from "./page/accountpage";
-import LoginPage from "./components/login";
+import LoginPage from "./components/authentication";
 import Footer from "./components/footer";
 import store from "./store";
 import "./index.css";

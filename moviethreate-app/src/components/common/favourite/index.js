@@ -1,5 +1,5 @@
 import { useState} from "react";
-import {postFavMovie, deleteFavMovie } from "../../../services"; // Import fetchFavMovieApi, postFavMovie, and deleteFavMovie
+import {postFavMovie, deleteFavMovie } from "../../../services";
 import { useParams } from "react-router-dom";
 
 const Favourite = () => {
@@ -24,7 +24,12 @@ const Favourite = () => {
   return (
     <div className="btn-container justify-content-between align-items-centre">
       <div className="btn p-2" onClick={toggleFavourite}>
-        <img src="../svg/star-solid.svg" alt="favourite" />
+        {isFavourite ? (
+            <img src="../svg/star-solid.svg" alt="favourite" />
+          ) : (
+            <img src="../svg/star-regular.svg" alt="favourite" />
+          )
+        }
       </div>
     </div>
   );
