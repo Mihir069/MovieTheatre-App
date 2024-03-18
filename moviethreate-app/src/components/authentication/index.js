@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchFavMovieApi, fetchUserApi } from '../../services';
-import { setfavoriteMovies } from '../../reducers/favoriteMovieReducer';
-import { setUserData} from '../../reducers/userAccountReducer';
+import { fetchUserApi } from '../../services';
+import { setUserData } from '../../reducers/userAccountReducer';
 import "./style.css";
 
 const LoginPage = () => {
@@ -21,9 +20,6 @@ const LoginPage = () => {
         const user = await fetchUserApi(`account/20960400`);
         dispatch(setUserData(user||[]));
         setLoggedIn(true);
-
-        const favoriteMovieData = await fetchFavMovieApi(`account/20960400/favorite/movies`);
-        dispatch(setfavoriteMovies(favoriteMovieData||[]));
       }catch(error){
         console.error('Error in fetching user data: ',error);
         setFormError(`Error in fetching user Data`)
