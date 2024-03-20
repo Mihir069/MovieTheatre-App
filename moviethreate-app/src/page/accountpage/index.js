@@ -1,33 +1,10 @@
-import { useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { fetchFavMovieApi, fetchUserApi } from '../../services';
-import { setUserData } from '../../reducers/userAccountReducer';
-import { setfavoriteMovies } from '../../reducers/favoriteMovieReducer';
 import './style.css'; 
 
 const AccountPage = () => {
   const userData = useSelector((state)=>state.userAccount.userData);
   const favoriteMovies = useSelector((state)=>state.favoriteMovie.favoriteMovies);
-  // const dispatch = useDispatch();
-
-
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const user = await fetchUserApi(`account/20960400`);
-  //       dispatch(setUserData(user || []));
-
-  //       const favoriteMovieData = await fetchFavMovieApi(`account/20960400/favorite/movies`);
-  //       dispatch(setfavoriteMovies(favoriteMovieData||[]));
-
-  //     } catch (error) {
-  //       console.error('Error fetching user data:', error.message);
-  //     }
-  //   };
-
-  //   fetchUserData();
-  // }, [dispatch]);
 
   if(userData.id === undefined){
     return <Navigate to="/login" replace={true} />
