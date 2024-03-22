@@ -75,7 +75,6 @@ export const fetchUserApi = async(url) =>{
         }
     })
     const data  = await response.json();
-    console.log("user",data)
     if(data){
         return data;
     }
@@ -92,7 +91,6 @@ export const fetchFavMovieApi = async(url) =>{
     })
     const data = await response.json();
     if(data.results){
-        console.log("favorite movie",data.results)
         return data.results;
     }
 }

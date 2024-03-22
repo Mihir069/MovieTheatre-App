@@ -4,7 +4,7 @@ import MovieHeader from "./components/header";
 import Home from "./page/home";
 import MovieInfo from "./page/movie-details";
 import AccountPage from "./page/accountpage";
-import LoginPage from "./components/authentication";
+// import LoginPage from "./components/authentication";
 import Footer from "./components/footer";
 import store from "./store";
 import "./index.css";
@@ -19,7 +19,7 @@ const App = () =>{
                             <Route path="/" element={<Home/>}/>
                             <Route path="/movie/:movieId" element={<MovieInfo />} />
                             <Route path="/account" element={<AccountPage/>}/>
-                            <Route path="/login" element={<LoginPage/>}/>
+                            {/* <Route path="/login" element={<LoginPage/>}/> */}
                         </Routes>
                     </div>
                     <Footer/>

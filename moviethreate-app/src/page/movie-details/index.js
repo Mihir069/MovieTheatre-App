@@ -21,12 +21,6 @@ const MovieInfo = () => {
     const dispatch = useDispatch();
     const {movieId} = useParams();
 
-    
-    // [{
-    // id:12334,   '
-
-    
-    // }]
 
     useEffect(()=>{
         const fetchMovieDetails =  async () =>{

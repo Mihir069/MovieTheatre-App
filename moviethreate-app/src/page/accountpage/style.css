@@ -1,38 +1,12 @@
-.account-page {
-    flex-direction: row;
-    width: 100%;
-    background-color: #f0f2f5; 
+.user-details-container{
+    background: #6c7aa6;
+    border-radius: 20px;
 }
-
-
-.main-content {
-    flex: 1; 
-}
-
-.user-details {
-    background-color: #fff;
-    border-radius: 10px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    padding: 20px;
-}
-
-.user-details h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.user-details li {
-    margin-bottom: 5px;
-}
-
-.avatar {
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.avatar img {
-    border-radius: 50%;
+.avatar img{
+    border-radius: 100px;
     width: 150px;
-    height: 150px;
-    object-fit: cover;
+}
+.user-name{
+    font-size: 45px;
+    font-weight: 700;
 }
