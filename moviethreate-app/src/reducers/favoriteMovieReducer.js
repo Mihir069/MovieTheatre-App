@@ -7,10 +7,7 @@ const favoriteMoviesSlice = createSlice({
     },
     reducers:{
         setfavoriteMovies(state,action){
-            state.favoriteMovies =  [
-                action.payload,
-                ...state.favoriteMovies  
-            ];
+            state.favoriteMovies = action.payload 
         }
     }
 })

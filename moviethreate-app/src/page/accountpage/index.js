@@ -19,6 +19,7 @@ const AccountPage = () => {
 
         const favoriteMovieData = await fetchFavMovieApi(`account/20960400/favorite/movies`);
         dispatch(setfavoriteMovies(favoriteMovieData));
+        console.log("favorite",favoriteMovieData)
 
       } catch (error) {
         console.error('Error fetching user data:', error.message);
@@ -70,17 +71,15 @@ const AccountPage = () => {
         }
         <div className="favorite-movies">
           <h2>Favorite Movies</h2>
-          <ul>
             {
               favoriteMovies.map((favmovie, index) => (
                 <div key={index}>
                   <div className='fav-movie-title'>
-                    {favmovie.id}
+                    {favmovie.original_title}
                   </div>
                 </div>
               ))
             }
-          </ul>
         </div>
       </div>
     </div>
