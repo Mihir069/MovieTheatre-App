@@ -1,3 +1,9 @@
+.favorite-movies {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+
+}
 .user-details-container{
     background: #6c7aa6;
     border-radius: 20px;
@@ -10,3 +16,39 @@
     font-size: 45px;
     font-weight: 700;
 }
+.genre-heading{
+    font-weight: 700;
+    font-size: 25px;
+}
+.movie-card-container{
+    overflow-x: auto;
+    white-space: nowrap;
+    height: auto;
+}
+.movie-card{
+    gap:20px;
+    transition: 0.3 ease;
+}
+.movie{
+    border-radius: 20px;
+    box-shadow: 0 2px 4px #c1bfbfe1;
+    text-align: center;
+}
+
+.movie-poster img{
+    width: 240px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.movie-card-container::-webkit-scrollbar {
+    display: none; 
+}
+.movie-genre{
+    font-size: 15px;
+}
+.movie-ratings{
+    position: relative;
+    top: -28px;
+}
+
+

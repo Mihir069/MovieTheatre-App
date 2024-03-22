@@ -5,6 +5,8 @@ import { fetchFavMovieApi, fetchUserApi } from '../../services';
 import { setUserData } from '../../reducers/userAccountReducer';
 import { setfavoriteMovies } from '../../reducers/favoriteMovieReducer';
 import './style.css'; 
+import { Link } from 'react-router-dom';
+import { ProgressBar } from 'react-bootstrap';
 
 const AccountPage = () => {
   const userData = useSelector((state)=>state.userAccount.userData);
@@ -69,13 +71,22 @@ const AccountPage = () => {
             <p>Loading user data...</p>
           )
         }
-        <div className="favorite-movies">
-          <h2>Favorite Movies</h2>
+        <div className="favorite-movies d-inline-flex pt-4">
             {
               favoriteMovies.map((favmovie, index) => (
                 <div key={index}>
-                  <div className='fav-movie-title'>
-                    {favmovie.original_title}
+                  <div className="movie m-1 p-3">
+                    <div className="movie-poster">
+                      <Link to={`/movie/${favmovie.id}`}>
+                        <img src={`https://image.tmdb.org/t/p/w500${favmovie.backdrop_path}`} alt={favmovie.name} />
+                      </Link>
+                    </div> 
+                    <div className="movie-ratings">
+                      <ProgressBar stars={favmovie.vote_average}/>
+                    </div>
+                    <div className="movie-name mb-4">
+                      <h6>{favmovie.title||favmovie.original_title}</h6>
+                    </div>
                   </div>
                 </div>
               ))
