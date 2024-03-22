@@ -22,26 +22,29 @@ const FavoriteMovies = () =>{
         fetchFavoriteMovie();
     },[dispatch]);
     return(
-        <div className="favorite-movies d-inline-flex pt-4">
-          {
-            favoriteMovies.map((favmovie, index) => (
-              <div key={index}>
-                <div className="movie py-2 ">
-                  <div className="movie-poster">
-                    <Link to={`/movie/${favmovie.id}`}>
-                      <img src={`https://image.tmdb.org/t/p/w500${favmovie.backdrop_path}`} alt={favmovie.name} />
-                    </Link>
-                  </div> 
-                  <div className="movie-ratings">
-                    <ProgressBar stars={favmovie.vote_average}/>
-                  </div>
-                  <div className="movie-name mb-4">
-                    <h6>{favmovie.title||favmovie.original_title}</h6>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
+        <div className="favorite-movies pt-4">
+            <h4>Favorite Movies</h4>
+            <div className="row">
+                {
+                    favoriteMovies.map((favmovie,index)=>(
+                        <div key={index} className="col-md-3 mb-4">
+                            <div className="movie p-3">
+                                <div className="movie-poster">
+                                    <Link to={`/movie/${favmovie.id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w500${favmovie.backdrop_path}`} alt={favmovie.name} />
+                                    </Link>
+                                </div>
+                                <div className="movie-ratings">
+                                    <ProgressBar stars={favmovie.vote_average}/>
+                                </div>
+                                <div className="movie-name mt-2">
+                                    <h6>{favmovie.title || favmovie.original_title}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 };
