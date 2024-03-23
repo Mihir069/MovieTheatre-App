@@ -94,7 +94,7 @@ export const fetchFavMovieApi = async(url) =>{
         return data.results;
     }
 }
-
+//favourite movie list
 export const postFavMovie = async(url,movieId) =>{
     const apiPath = `${apiURL}${url}${keyAPI}`;
     console.log("post api :",apiPath)
@@ -110,7 +110,6 @@ export const postFavMovie = async(url,movieId) =>{
     })
     const data = await response.json()
     if(data){
-        console.log("posted",data)
         return data;
     }
 
@@ -130,7 +129,47 @@ export const deleteFavMovie= async(url,movieId) =>{
     })
     const data = await response.json()
     if(data){
-        console.log("deleted",data)
+        return data;
+    }
+
+}
+//watch movie list
+export const postwatchMovie = async(url,movieId) =>{
+    const apiPath = `${apiURL}${url}${keyAPI}`;
+    console.log("post api :",apiPath)
+    const response = await fetch(apiPath,{
+        method:"POST",
+        headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM",
+        },
+        body: JSON.stringify({media_type: 'movie', media_id: `${movieId}`, watchlist: true}),
+    })
+    const data = await response.json()
+    if(data){
+        console.log("added in watchlist",data)
+        return data;
+    }
+
+}
+export const deletewatchMovie= async(url,movieId) =>{
+    const apiPath = `${apiURL}${url}${keyAPI}`;
+    console.log("deleted api :",apiPath)
+    const response = await fetch(apiPath,{
+        method:"POST",
+        headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM",
+        },
+        body: JSON.stringify({media_type: 'movie', media_id: `${movieId}`, watchlist: false}),
+    })
+    const data = await response.json()
+    if(data){
+        console.log("deleted in watchlist",data)
         return data;
     }
 
