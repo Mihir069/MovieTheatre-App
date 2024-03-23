@@ -2,6 +2,7 @@
 import UserDetails from '../../components/user-account/user-details';
 import FavoriteMovies from '../../components/user-account/favorite-movies';
 import './style.css'; 
+import MovieWatchList from '../../components/user-account/movie-watchlist';
 
 const AccountPage = () => {
   // if(userData.id === undefined){
@@ -13,6 +14,7 @@ const AccountPage = () => {
       <div className="account-details-card row">
         <UserDetails/>
         <FavoriteMovies/>
+        <MovieWatchList/>
       </div>
     </div>
   );

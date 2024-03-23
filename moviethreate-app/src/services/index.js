@@ -79,7 +79,7 @@ export const fetchUserApi = async(url) =>{
         return data;
     }
 }
-
+//fetch faborite movie
 export const fetchFavMovieApi = async(url) =>{
     const apiPath = `${apiURL}${url}${keyAPI}`;
     const response = await fetch(apiPath,{
@@ -173,4 +173,19 @@ export const deletewatchMovie= async(url,movieId) =>{
         return data;
     }
 
+}
+//fetching watch list movie
+export const fetchWatchListApi = async(url) =>{
+    const apiPath = `${apiURL}${url}${keyAPI}`;
+    const response = await fetch(apiPath,{
+        method:'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2U3YmQzYzY5YTA4NWFlZWIxNGU5MGRjY2YyM2RmZSIsInN1YiI6IjY1YmI5YTdjZTE4Yjk3MDE3YjlhMWNhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.McH6PQ9z5EXcvzgOskjifiL3B5aqAC_5Vzu_tlciZaM'
+        }
+    })
+    const data = await response.json();
+    if(data.results){
+        return data.results;
+    }
 }
