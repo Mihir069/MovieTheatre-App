@@ -1,12 +1,52 @@
-.user-details-container{
-    background: #6c7aa6;
+.user-details-container{ 
+    background: url("../../../../public/svg/user-bg.png");
+    background-size: cover;
     border-radius: 20px;
 }
 .avatar img{
     border-radius: 100px;
     width: 150px;
 }
+.user-details{
+    color: #a80000;
+}
 .user-name{
-    font-size: 45px;
+    font-size: 30px;
     font-weight: 700;
+    
+}
+.user-movie-score{
+    font-size: 30px;
+    font-weight: 700;
+    color: #a80000;
+}
+.user-review-container{
+    width: 70px;
+    height: 70px;
+    background-color: #000000;
+    border-radius: 50%;
+    position: relative;
+}
+  
+.circle-review{
+    width: 100%;
+    height: 100%;
+}
+  
+.circle-review-bar {
+    stroke: #ccc;
+}
+  
+.circle-review-indicator {
+    stroke: #007bff;
+    transition: stroke-dasharray 0.3s ease;
+}
+  
+.circle-review-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
 }
