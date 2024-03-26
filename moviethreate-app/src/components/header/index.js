@@ -61,6 +61,9 @@ const MovieHeader = () => {
                         <Link to="/">Watchlist</Link>
                     </li>
                     <li className="menu-links">
+                        <Link to="/collections">Discover</Link>
+                    </li>
+                    <li className="menu-links">
                         <Link to="/">Blog</Link>
                     </li>
                 </ul>

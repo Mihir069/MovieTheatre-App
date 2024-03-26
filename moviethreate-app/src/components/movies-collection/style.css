@@ -1,0 +1,8 @@
+.movies-collection-header{
+    border-radius: 30px;
+    background: linear-gradient(to left, #7b99df, #080486);
+}
+.collection-text h1{
+    font-size: 45px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
