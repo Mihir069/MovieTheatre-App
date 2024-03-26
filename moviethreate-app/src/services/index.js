@@ -36,7 +36,6 @@ export const fetchApiData =  async (url) =>{
             ratings: item.vote_average,
             genre: item.genre_ids,
         }));
-
         return results;
        
     }
