@@ -10,7 +10,7 @@ import TvTrendsCollections from "../../components/trends/tv-series";
 import "./style.css";
 
 const Collections = () =>{
-    const [selectedOption,setSelectedOption] = useState('Movies');
+    const [selectedOption,setSelectedOption] = useState('TV');
     const [selectedTvOption,setSeletedTvOption] = useState('Airing-today');
 
     const handleOptionClick = (option) =>{
