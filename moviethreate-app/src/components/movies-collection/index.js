@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./style.css";
 import { useEffect } from "react";
 import { fetchApiData} from "../../services";
-import { setMoviesCollection } from "../../reducers/discoverMoviesReducer";
+import { setMoviesCollection } from "../../reducers/collectionsReducer";
+import CollectionCard from "../common/collections-card";
 const MoviesCollections = () =>{
-    const moviesCollectionList = useSelector((state)=>state.moviesCollection.moviesCollection);
+    const moviesCollectionList = useSelector((state)=>state.Collections.moviesCollection);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -19,24 +19,7 @@ const MoviesCollections = () =>{
         fetchDiscoverMovies();
     },[dispatch])
     return(
-        <div className="movies-collection-container">
-            <div className="movies-collection-header p-5">
-                <div className="collection-text p-5">
-                    <h1>
-                        Discover the various Entertainment here.
-                    </h1>
-                </div>
-            </div>
-            <div className="movies-collection">
-                {moviesCollectionList.title}
-                {console.log(moviesCollectionList.title)}
-                {moviesCollectionList.map((movie,index)=>(
-                    <div key={index}>
-                        {movie.title}
-                    </div>
-                ))}
-            </div>
-        </div>
+        <CollectionCard theatreCollection={moviesCollectionList}/>
     )
 }
 export default MoviesCollections;

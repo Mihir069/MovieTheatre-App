@@ -1,0 +1,29 @@
+.collectedItem-collection-list{
+    background:linear-gradient(to left,#ffffff, #4969b2);
+    border-radius: 20px;
+}
+.collectedItem-collection-list{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+.collectedItem-collection-list::-webkit-scrollbar{
+    width: 8px;
+}
+.collectedItem-collection-list::-webkit-scrollbar-thumb{
+    background-color: #888;
+    border-radius: 4px;
+}
+.collectedItem-collection-list::-webkit-scrollbar-track{
+    background-color: #f4f4f4;
+}
+.collectedItem-list{
+    border-radius: 20px;
+    box-shadow: 0 2px 4px #c1bfbfe1;
+    text-align: center;
+}
+.collectedItem-poster-list img{
+    width: 180px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}

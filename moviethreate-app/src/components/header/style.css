@@ -1,6 +1,6 @@
 .navbar {
     height: 95px;
-    background-color: #ffffff;
+    background: linear-gradient(to left, #7b99df, #080486);
     border-radius: 20px;
 }
 

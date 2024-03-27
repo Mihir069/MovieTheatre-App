@@ -4,7 +4,7 @@ import movieInfoReducer from "./reducers/movieInfoReducer";
 import userAccountReducer from "./reducers/userAccountReducer";
 import favoriteMovieReducer from "./reducers/favoriteMovieReducer";
 import movieWatchListReducer from "./reducers/movieWatchListReducer";
-import discoverMoviesReducer from "./reducers/discoverMoviesReducer";
+import collectionsReducer from "./reducers/collectionsReducer";
 export default configureStore({
     reducer:{
         movies:movieReducer,
@@ -12,6 +12,6 @@ export default configureStore({
         userAccount:userAccountReducer,
         favoriteMovie:favoriteMovieReducer,
         movieWatchList:movieWatchListReducer,
-        moviesCollection:discoverMoviesReducer
+        Collections:collectionsReducer
     }
 })
