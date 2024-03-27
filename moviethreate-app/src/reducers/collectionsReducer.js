@@ -8,7 +8,9 @@ const collectionSlice = createSlice({
         airingTodayCollection:[],
         onTheAirCollection:[],
         popularTvSeriesCollection:[],
-        topTvSeriesCollection:[]
+        topTvSeriesCollection:[],
+        movieTrendsCollection:[],
+        tvTrendsCollection:[]
     },
     reducers:{
         setMoviesCollection(state,action){
@@ -28,8 +30,14 @@ const collectionSlice = createSlice({
         },
         setTopTvSeriesCollection(state,action){
             state.topTvSeriesCollection = action.payload;
+        },
+        setMovieTrendsCollection(state,action){
+            state.movieTrendsCollection = action.payload;
+        },
+        setTvTrendsCollection(state,action){
+            state.tvTrendsCollection = action.payload;
         }
     }
 })
-export const {setMoviesCollection,setTvCollection,setAiringTodayCollection,setOnTheAirCollection,setPopularTvSeriesCollection,setTopTvSeriesCollection} = collectionSlice.actions;
+export const {setMoviesCollection,setTvCollection,setAiringTodayCollection,setOnTheAirCollection,setPopularTvSeriesCollection,setTopTvSeriesCollection,setMovieTrendsCollection,setTvTrendsCollection} = collectionSlice.actions;
 export default collectionSlice.reducer;
