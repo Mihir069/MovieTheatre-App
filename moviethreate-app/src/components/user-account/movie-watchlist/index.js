@@ -23,7 +23,6 @@ const MovieWatchList = () =>{
     },[dispatch]);
     return(
         <div className="favorite-movies pt-4">
-            <h4>Watch List</h4>
             <div className="row">
                 {
                     watchListMovies.map((watchMovie,index)=>(

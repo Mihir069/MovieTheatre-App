@@ -23,7 +23,6 @@ const FavoriteMovies = () =>{
     },[dispatch]);
     return(
         <div className="favorite-movies pt-4">
-            <h4>Favorite Movies</h4>
             <div className="row">
                 {
                     favoriteMovies.map((favmovie,index)=>(
