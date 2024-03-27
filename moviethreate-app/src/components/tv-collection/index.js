@@ -13,7 +13,7 @@ const TvSeiresCollections = () =>{
                 const tvCollectionData = await fetchApiData(`discover/tv`);
                 dispatch(setTvCollection(tvCollectionData))
             }catch(error){
-                console.error('Error fetching user data:', error.message);
+                console.error('Error fetching tv data:', error.message);
             }
         };
         fetchDiscoverTv();

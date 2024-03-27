@@ -8,7 +8,7 @@ const CollectionCard = ({theatreCollection}) =>{
                 <div key={index} className="col-auto mb-4">
                     <div className="collectedItem-list p-3">
                         <div className="collectedItem-poster-list">
-                            <Link to={`/collectedItem/${collectedItem.id}`}>
+                            <Link to={`/movie/${collectedItem.id}`}>
                                 <img src={`https://image.tmdb.org/t/p/w500${collectedItem.poster}`} alt={collectedItem.name} />
                             </Link>
                         </div>

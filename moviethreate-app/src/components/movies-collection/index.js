@@ -13,7 +13,7 @@ const MoviesCollections = () =>{
                 const movieCollectionData = await fetchApiData(`discover/movie`);
                 dispatch(setMoviesCollection(movieCollectionData))
             }catch(error){
-                console.error('Error fetching user data:', error.message);
+                console.error('Error fetching movie data:', error.message);
             }
         };
         fetchDiscoverMovies();
