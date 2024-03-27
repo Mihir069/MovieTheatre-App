@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchApiData } from "../../../services";
 import { setAiringTodayCollection } from "../../../reducers/collectionsReducer";
-import CollectionCard from "../../common/collections-card";
+import TvCollectionCard from "../../common/collections-card/tv-series";
+
 
 const AiringToday = () =>{
     const tvAiringTodayList = useSelector((state)=>state.Collections.airingTodayCollection);
@@ -20,7 +21,7 @@ const AiringToday = () =>{
         fetchAiringToday();
     },[dispatch])
     return(
-        <CollectionCard theatreCollection={tvAiringTodayList}/>
+        <TvCollectionCard theatreCollection={tvAiringTodayList}/>
     )
 }
 export default AiringToday;

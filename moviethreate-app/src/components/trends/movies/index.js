@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchApiData } from "../../../services";
 import { setMovieTrendsCollection } from "../../../reducers/collectionsReducer";
-import CollectionCard from "../../common/collections-card";
+import MovieCollectionCard from "../../common/collections-card/movies";
 
 const MovieTrendsCollections = () =>{
     const moviesTrendsCollectionList = useSelector((state)=>state.Collections.movieTrendsCollection);
@@ -20,7 +20,7 @@ const MovieTrendsCollections = () =>{
         fetchDiscoverMovieTrends();
     },[dispatch])
     return(
-        <CollectionCard theatreCollection={moviesTrendsCollectionList}/>
+        <MovieCollectionCard theatreCollection={moviesTrendsCollectionList}/>
     )
 }
 export default MovieTrendsCollections;

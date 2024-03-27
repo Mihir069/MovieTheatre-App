@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchApiData } from "../../../services";
 import { setOnTheAirCollection } from "../../../reducers/collectionsReducer";
-import CollectionCard from "../../common/collections-card";
+import TvCollectionCard from "../../common/collections-card/tv-series";
 
 const OnTheAir = () =>{
     const tvOnTheAirList = useSelector((state)=>state.Collections.onTheAirCollection);
@@ -20,7 +20,7 @@ const OnTheAir = () =>{
         fetchOnTheAir();
     },[dispatch])
     return(
-        <CollectionCard theatreCollection={tvOnTheAirList}/>
+        <TvCollectionCard theatreCollection={tvOnTheAirList}/>
     )
 }
 export default OnTheAir;

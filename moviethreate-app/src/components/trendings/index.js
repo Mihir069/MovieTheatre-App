@@ -7,9 +7,6 @@ import MovieCard from "../common/movie-cards";
 import Loading from "../common/loader";
 import "../../index.css";
 
-
-
-
 const TrendingMovies = () => {
     const [sliderPosition,setSliderPosition] = useState(0);
     const trendingMovies = useSelector((state)=>state.movies.trendingMovies);

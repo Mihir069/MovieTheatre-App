@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import ProgressBar from "../progress-bar"
-import "./style.css";
-const CollectionCard = ({theatreCollection}) =>{
+import ProgressBar from "../../progress-bar"
+import "../style.css";
+const MovieCollectionCard = ({theatreCollection}) =>{
     return(
         <div className="collectedItem-collection-list d-flex">
             {theatreCollection.map((collectedItem,index)=>(
@@ -24,4 +24,4 @@ const CollectionCard = ({theatreCollection}) =>{
         </div>
     )
 }
-export default CollectionCard;
+export default MovieCollectionCard;

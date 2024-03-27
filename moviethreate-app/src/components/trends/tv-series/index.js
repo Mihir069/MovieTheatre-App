@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchApiData } from "../../../services";
 import { setTvTrendsCollection } from "../../../reducers/collectionsReducer";
-import CollectionCard from "../../common/collections-card";
+import TvCollectionCard from "../../common/collections-card/tv-series";
 
 const TvTrendsCollections = () =>{
     const tvTrendsCollectionList = useSelector((state)=>state.Collections.tvTrendsCollection);
@@ -20,7 +20,7 @@ const TvTrendsCollections = () =>{
         fetchDiscoverTvTrends();
     },[dispatch])
     return(
-        <CollectionCard theatreCollection={tvTrendsCollectionList}/>
+        <TvCollectionCard theatreCollection={tvTrendsCollectionList}/>
     )
 }
 export default TvTrendsCollections;

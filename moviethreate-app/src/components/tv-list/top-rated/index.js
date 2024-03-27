@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchApiData } from "../../../services";
 import { setTopTvSeriesCollection } from "../../../reducers/collectionsReducer";
-import CollectionCard from "../../common/collections-card";
+import TvCollectionCard from "../../common/collections-card/tv-series";
 
 const TopTvSeries = () =>{
     const tvTopTvSeriesList = useSelector((state)=>state.Collections.topTvSeriesCollection);
@@ -20,7 +20,7 @@ const TopTvSeries = () =>{
         fetchTopTvSeries();
     },[dispatch])
     return(
-        <CollectionCard theatreCollection={tvTopTvSeriesList}/>
+        <TvCollectionCard theatreCollection={tvTopTvSeriesList}/>
     )
 }
 export default TopTvSeries;
